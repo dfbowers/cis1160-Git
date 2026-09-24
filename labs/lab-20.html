@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="CIS-1160 Git tutorial, Lab 20: M3 Checkpoint"><title>Lab 20: M3 Checkpoint | CIS-1160 Git</title><link rel="stylesheet" href="../assets/site.css"></head>
+<body><a class="skip-link" href="#main">Skip to lesson</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark">G</span><span>CIS-1160 <b>Git Practice</b></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Labs <span aria-hidden="true">☰</span></button><nav id="site-nav" class="site-nav"><a href="../index.html">Overview</a><a href="../index.html#part-1">Fundamentals</a><a href="../index.html#part-2">Branching &amp; merging</a></nav></header>
+<div class="layout"><aside class="sidebar"><div class="side-label">Tutorial map</div><a class="part-link" href="../index.html#part-1">Part 1 · Fundamentals</a><a class="lab-link " href="lab-01.html"><span>01</span>Git Setup</a><a class="lab-link " href="lab-02.html"><span>02</span>Create Your First Repository</a><a class="lab-link " href="lab-03.html"><span>03</span>Create a Project File</a><a class="lab-link " href="lab-04.html"><span>04</span>Stage Your First File</a><a class="lab-link " href="lab-05.html"><span>05</span>Make Your First Commit</a><a class="lab-link " href="lab-06.html"><span>06</span>Make and Inspect a Change</a><a class="lab-link " href="lab-07.html"><span>07</span>Stage and Commit the Change</a><a class="lab-link " href="lab-08.html"><span>08</span>Staged vs. Unstaged Changes</a><a class="lab-link " href="lab-09.html"><span>09</span>Add a README</a><a class="lab-link " href="lab-10.html"><span>10</span>Inspect Repository History</a><a class="part-link" href="../index.html#part-2">Part 2 · Branching &amp; merging</a><a class="lab-link " href="lab-11.html"><span>11</span>Understanding Branches</a><a class="lab-link " href="lab-12.html"><span>12</span>Create a Branch</a><a class="lab-link " href="lab-13.html"><span>13</span>Work on a Branch</a><a class="lab-link " href="lab-14.html"><span>14</span>Switch Between Branches</a><a class="lab-link " href="lab-15.html"><span>15</span>Create Diverging Work</a><a class="lab-link " href="lab-16.html"><span>16</span>View Branch History</a><a class="lab-link " href="lab-17.html"><span>17</span>Merge Branches</a><a class="lab-link " href="lab-18.html"><span>18</span>Create a Merge Conflict</a><a class="lab-link " href="lab-19.html"><span>19</span>Resolve a Merge Conflict</a><a class="lab-link active" href="lab-20.html"><span>20</span>M3 Checkpoint</a></aside>
+<main id="main" class="lesson"><div class="crumb"><a href="../index.html">CIS-1160 Git Practice</a><span>/</span><span>Lab 20</span></div><div class="lesson-kicker">Part 2 · Branching and merging</div><h1>Lab 20: M3 Checkpoint</h1><div class="lesson-progress"><span>Lab 20 of 20</span><div class="progress-track"><span style="width:100%"></span></div></div>
+<section class="lesson-section goal-section"><h2>Goal</h2><p>Demonstrate the branching and merging work completed in Part 2.</p>
+<p>Run:</p>
+<pre><code>git log --graph --oneline --all</code></pre>
+<p>Review the graph before creating your evidence.</p>
+<p>Create:</p>
+<pre><code>git log --graph --oneline --all &gt; Firstname_Lastname_M3_log.txt</code></pre>
+<p>Students may submit:</p>
+<ul>
+<li>the resulting <code>.txt</code> file, or</li>
+<li>a screenshot clearly showing equivalent evidence</li>
+</ul>
+<p>The evidence should show:</p>
+<ul>
+<li>commits made during the branch work</li>
+<li>more than one branch/history path where applicable</li>
+<li>merge history</li>
+<li>the completed conflict-resolution work</li>
+</ul>
+<hr>
+<h1>7. Checkpoint Repository Design</h1>
+<p>A major feature of the web tutorial should be the ability to recover without restarting the entire sequence.</p>
+<p>Provide downloadable repository checkpoints at important transitions.</p>
+<p>Suggested checkpoints:</p>
+<pre><code>checkpoints/
+├── part1-start/
+├── after-first-commit/
+├── m2-complete/
+├── branching-start/
+├── divergent-branches/
+├── pre-merge/
+└── conflict-start/</code></pre></section>
+<section class="lesson-section "><h2>Instructions</h2><h3>Requirements</h3><p>Each checkpoint should:</p>
+<ul>
+<li>contain a valid <code>.git</code> repository</li>
+<li>contain the exact files expected at that point</li>
+<li>contain an appropriate commit history</li>
+<li>use <code>main</code> consistently</li>
+<li>have a clean working tree unless the lesson specifically requires otherwise</li>
+</ul>
+<h3>Website Recovery Feature</h3><p>Each activity should include a small section:</p>
+<h3>Repository broken?</h3>
+<p>If your repository is no longer in the expected state, download the checkpoint for this activity and continue from there.</p>
+<p>This should be positioned as normal recovery, not failure.</p>
+<hr>
+<h1>8. Instructor Notes</h1>
+<h3>Common Troubleshooting Commands</h3><p>When a student is stuck, begin with:</p>
+<pre><code>git status</code></pre>
+<p>Then:</p>
+<pre><code>git branch</code></pre>
+<p>If branch/history state is unclear:</p>
+<pre><code>git log --graph --oneline --all</code></pre>
+<p>These three commands should resolve or expose many beginner problems.</p>
+<h3>Common Problems</h3><h3>Wrong Branch</h3>
+<p>Symptom:</p>
+<p>A student's files/history do not match the instructions.</p>
+<p>Check:</p>
+<pre><code>git branch</code></pre>
+<p>The <code>*</code> identifies the current branch.</p>
+<h3>File Was Not Saved</h3>
+<p>Symptom:</p>
+<pre><code>git diff</code></pre>
+<p>shows nothing after the student says they edited a file.</p>
+<p>Confirm the file was actually saved.</p>
+<h3>Commit Says There Is Nothing to Commit</h3>
+<p>Check:</p>
+<pre><code>git status</code></pre>
+<p>Determine whether:</p>
+<ul>
+<li>the file was saved</li>
+<li>the change was already committed</li>
+<li>the student is in the expected repository</li>
+<li>the student is on the expected branch</li>
+</ul>
+<h3>Merge Performed in the Wrong Direction</h3>
+<p>Reinforce:</p>
+<blockquote>
+<p>Switch to the branch that should receive the changes, then merge the other branch.</p>
+</blockquote>
+<h3>Expected Conflict Did Not Occur</h3>
+<p>Both branches must independently modify the same part of the same file after their histories diverge.</p>
+<h3>Student Is in the Wrong Folder</h3>
+<p>Use:</p>
+<pre><code>pwd</code></pre>
+<p>and:</p>
+<pre><code>ls</code></pre>
+<p>Confirm that the student is inside the intended repository.</p>
+<h3>Line Ending Problems</h3>
+<p>For the CIS-1160 lab environment:</p>
+<pre><code>git config --global core.autocrlf false</code></pre>
+<p>Do not frame this as the universal Windows Git setting. It is the configuration selected for these course activities based on observed lab behaviour.</p>
+<hr>
+<h1>9. Terminology to Reinforce</h1>
+<p>| Term | Student-friendly meaning | |---|---| | Repository | Project folder whose changes Git tracks | | Working directory | Files currently being worked on | | Staging area | Changes selected for the next commit | | Commit | Saved point in repository history | | History | Sequence of commits | | Branch | Separate line of development within a repository | | <code>main</code> | Primary branch used in these activities | | Merge | Bring changes from one branch into another | | Merge conflict | Git needs a human to decide how competing changes should be combined | | HEAD | The commit/branch currently checked out | | Remote | Another copy of the repository stored elsewhere |</p>
+<p>Avoid describing a commit simply as "saving a file." The file is already saved on disk. A commit records a version in Git history.</p>
+<hr>
+<h1>10. Future Remote Repository Module</h1>
+<p>Do not introduce remote repositories into the fundamentals or branching activities unless needed for context.</p>
+<p>The progression should remain:</p>
+<pre><code>Part 1
+Working files → Stage → Commit → Local history
+
+Part 2
+Local history → Branches → Merge → Conflict resolution
+
+Future module
+Local repository ↔ Remote repository</code></pre>
+<p>When remotes are introduced, clearly distinguish:</p>
+<pre><code>git push</code></pre>
+<p>Send local commits to a remote repository.</p>
+<pre><code>git pull</code></pre>
+<p>Bring remote changes into the local repository.</p>
+<p>A <strong>pull request</strong> is not the same thing as <code>git pull</code>.</p>
+<p>A pull request is a workflow on a hosting platform such as Bitbucket or GitHub for proposing, reviewing, and ultimately merging branch changes.</p>
+<hr>
+<h1>11. Website Implementation Notes</h1>
+<p>The future web tutorial should prioritize clarity over visual complexity.</p>
+<h3>Recommended Features</h3><ul>
+<li>one activity per page</li>
+<li>persistent Part 1 / Part 2 navigation</li>
+<li>Previous and Next buttons</li>
+<li>copy buttons on command blocks</li>
+<li>visually distinct command and expected-output areas</li>
+<li>simple branch diagrams</li>
+<li>expandable "Why?" explanations</li>
+<li>expandable troubleshooting help</li>
+<li>checkpoint download at appropriate activities</li>
+<li>progress indicator</li>
+<li>clear instructor/student separation if instructor notes are hosted</li>
+</ul>
+<h3>Commands vs. Output</h3><p>Never mix commands students should type with output they should expect.</p>
+<p>Example:</p>
+<h3>Run</h3>
+<pre><code>git status</code></pre>
+<h3>You should see</h3>
+<p>A message identifying the current branch and repository state.</p>
+<p>Exact output may vary.</p>
+<h3>Avoid Over-Scripting</h3><p>Do not require students to reproduce exact commit hashes or output that naturally differs between machines.</p>
+<p>Focus checks on meaningful state:</p>
+<ul>
+<li>correct branch</li>
+<li>clean/modified/staged status</li>
+<li>expected file exists</li>
+<li>expected commit exists</li>
+<li>branch graph demonstrates the intended concept</li>
+</ul>
+<hr>
+<h1>12. Assessment Alignment</h1>
+<h3>M2 Evidence</h3><pre><code>git log --oneline &gt; Firstname_Lastname_M2_log.txt</code></pre>
+<p>Purpose:</p>
+<p>Demonstrates that the student created and committed multiple changes to a local repository.</p>
+<h3>M3 Evidence</h3><pre><code>git log --graph --oneline --all &gt; Firstname_Lastname_M3_log.txt</code></pre>
+<p>Purpose:</p>
+<p>Demonstrates repository history involving branching and merging.</p>
+<p>Evidence should support competency rather than reward cosmetic differences in Git output.</p>
+<hr>
+<h1>13. Content Intentionally Excluded</h1>
+<p>The first version of the CIS-1160 tutorial should intentionally omit:</p>
+<ul>
+<li>Ruby setup and execution</li>
+<li>Rake</li>
+<li>custom aliases required by the tutorial</li>
+<li>Git tags</li>
+<li>manual <code>.gitconfig</code> editing</li>
+<li>Git object database exploration</li>
+<li>detached HEAD exercises</li>
+<li>advanced reset exercises</li>
+<li>rebasing</li>
+<li>Git daemon/server setup</li>
+<li>programming-specific examples</li>
+</ul>
+<p>These may be added later only if they directly support a CIS-1160 outcome or another course requirement.</p>
+<hr>
+<h1>14. Relationship to Git Immersion</h1>
+<p>Git Immersion informed the instructional progression used in the original CIS-1160 activities, particularly:</p>
+<ul>
+<li>introducing repository fundamentals through repeated small commits</li>
+<li>progressively exposing repository history</li>
+<li>creating a separate branch for new work</li>
+<li>allowing branch histories to diverge</li>
+<li>visualizing branch history</li>
+<li>merging branches</li>
+<li>deliberately producing a merge conflict</li>
+<li>resolving the conflict manually</li>
+<li>using checkpoint repositories to allow learners to enter/recover at different stages</li>
+</ul>
+<p>The self-hosted CIS-1160 version should use original wording, original examples, and original project files rather than reproducing Git Immersion content.</p>
+<p>The primary improvement is removing unrelated Ruby/Rake dependencies and aligning every activity directly with CIS-1160 learning outcomes.</p>
+<hr>
+<h1>15. Build Checklist for the Future Work Thread</h1>
+<p>Before publishing the web tutorial:</p>
+<ul>
+<li>[ ] Verify every command using a clean Git for Windows installation</li>
+<li>[ ] Test the complete Part 1 sequence from an empty folder</li>
+<li>[ ] Test the complete Part 2 sequence</li>
+<li>[ ] Confirm the conflict exercise reliably creates a conflict</li>
+<li>[ ] Build and test every checkpoint repository</li>
+<li>[ ] Confirm <code>main</code> is used consistently</li>
+<li>[ ] Test with <code>core.autocrlf false</code></li>
+<li>[ ] Verify instructions on a standard CIS classroom computer</li>
+<li>[ ] Verify instructions for a distance student on a personal Windows computer</li>
+<li>[ ] Confirm no exercise requires Ruby, Rake, or another programming runtime</li>
+<li>[ ] Confirm M2 evidence works</li>
+<li>[ ] Confirm M3 evidence clearly demonstrates the required work</li>
+<li>[ ] Add screenshots/diagrams only where they improve understanding</li>
+<li>[ ] Conduct a final student-readability pass</li>
+<li>[ ] Conduct an outcome-alignment and fairness review</li>
+</ul>
+<hr>
+<h1>16. Final Design Goal</h1>
+<p>A student should be able to begin with no Git experience and progress through:</p>
+<pre><code>Create repository
+      ↓
+Make changes
+      ↓
+Stage changes
+      ↓
+Commit changes
+      ↓
+Inspect history
+      ↓
+Create branch
+      ↓
+Work independently
+      ↓
+See branches diverge
+      ↓
+Merge
+      ↓
+Encounter conflict
+      ↓
+Resolve conflict</code></pre>
+<p>without needing to understand programming, Ruby, Rake, Git internals, or unrelated advanced Git features.</p>
+<p>The tutorial should teach enough Git for students to understand what they are doing before CIS-1160 moves into remote repositories and collaborative workflows.</p></section>
+<section class="lesson-section "><h2>Commands</h2><p class="section-intro">Use these commands as you work through the instructions. Run them in Git Bash.</p><div class="command-item"><pre><code>git log --graph --oneline --all</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git log --graph --oneline --all &gt; Firstname_Lastname_M3_log.txt</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git status</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git branch</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git log --graph --oneline --all</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git branch</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git diff</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git status</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git config --global core.autocrlf false</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git push</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git pull</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git status</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git log --oneline &gt; Firstname_Lastname_M2_log.txt</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git log --graph --oneline --all &gt; Firstname_Lastname_M3_log.txt</code></pre><button class="copy-button" type="button">Copy</button></div></section>
+<section class="lesson-section notice-section"><h2>What to Notice</h2><p>The graph shows branch work, merge history, and the completed conflict resolution.</p></section>
+<section class="lesson-section check-section"><h2>Check Your Work</h2><p>Run git log --graph --oneline --all and save the output as Firstname_Lastname_M3_log.txt.</p></section>
+<section class="recovery"><div class="recovery-icon" aria-hidden="true">↻</div><div><h2>Repository broken?</h2><p>If your repository is no longer in the expected state, download this checkpoint and continue from the files and history it contains. Extract the ZIP, then use Git Bash in the extracted support-tools folder.</p></div><a class="button secondary" href="../checkpoints/lab-20-start.zip" download>Download Lab 20 checkpoint</a></section>
+<nav class="lesson-nav" aria-label="Previous and next lessons"><a href="lab-19.html" class="nav-card"><span>← Previous</span><strong>Lab 19: Resolve a Merge Conflict</strong></a><a href="../index.html" class="nav-card next"><span>Next →</span><strong>Course home</strong></a></nav><footer class="site-footer">CIS-1160 Introduction to Information Systems · Git fundamentals and branching</footer></main></div><script src="../assets/site.js"></script></body></html>

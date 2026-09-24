@@ -1,0 +1,55 @@
+from pathlib import Path
+import os, shutil, subprocess, tempfile, zipfile
+ROOT=Path(__file__).resolve().parents[1]; OUT=ROOT/'checkpoints'; OUT.mkdir(exist_ok=True)
+BASE='Network Troubleshooting Checklist\n\n1. Confirm the physical connection.\n2. Check link status.\n3. Verify the IP configuration.\n'
+README='# Support Tools\n\nPractice repository for CIS-1160 Git activities.\n\nThis repository contains simple technical support documentation used to practise version control.\n'
+work=Path(tempfile.mkdtemp(prefix='cis1160-checkpoints-'))/'support-tools'; work.mkdir()
+env=os.environ.copy(); env.update({'GIT_AUTHOR_NAME':'CIS-1160 Student','GIT_AUTHOR_EMAIL':'student@example.com','GIT_COMMITTER_NAME':'CIS-1160 Student','GIT_COMMITTER_EMAIL':'student@example.com'})
+def run(*args): subprocess.run(['git',*args],cwd=work,check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=env)
+def write(name,text): (work/name).write_text(text,encoding='utf-8',newline='\n')
+def add_commit(files,msg): run('add',*files); run('commit','-m',msg)
+def capture(n):
+    target=OUT/f'lab-{n:02d}-start.zip'
+    if target.exists(): target.unlink()
+    with zipfile.ZipFile(target,'w',zipfile.ZIP_DEFLATED) as z:
+        for p in work.rglob('*'): z.write(p,p.relative_to(work.parent).as_posix())
+    print(target.name,target.stat().st_size)
+def alias(src,name): shutil.copyfile(OUT/src,OUT/(name+'.zip'))
+# Lab 2 creates the directory and initializes the repository. Lab 3 starts at that clean, empty repository.
+subprocess.run(['git','init','-b','main'],cwd=work,check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=env); run('config','core.autocrlf','false'); run('config','user.name','CIS-1160 Student'); run('config','user.email','student@example.com')
+capture(3)
+write('network-checklist.txt',BASE); capture(4)
+run('add','network-checklist.txt'); capture(5)
+run('commit','-m','Add initial network checklist'); capture(6)
+write('network-checklist.txt',BASE+'4. Test the default gateway.\n'); capture(7)
+add_commit(['network-checklist.txt'],'Add gateway test'); capture(8)
+write('network-checklist.txt',BASE+'4. Test the default gateway.\n5. Test DNS resolution.\n'); add_commit(['network-checklist.txt'],'Expand troubleshooting checklist')
+write('README.md',README); capture(9)
+add_commit(['README.md'],'Add project README'); capture(10); capture(11); capture(12)
+run('switch','-c','troubleshooting'); capture(13)
+text=BASE+'4. Test the default gateway.\n5. Test DNS resolution.\n7. Ping a known external IP address.\n'; write('network-checklist.txt',text); add_commit(['network-checklist.txt'],'Add external connectivity test')
+text+='8. Record any packet loss or unusual latency.\n'; write('network-checklist.txt',text); add_commit(['network-checklist.txt'],'Add packet loss check'); capture(14)
+run('switch','main'); capture(15)
+write('README.md',README+'\n## Purpose\n\nThese files support a repeatable network troubleshooting process.\n'); add_commit(['README.md'],'Document repository purpose'); capture(16); capture(17)
+run('merge','troubleshooting'); capture(18)
+run('branch','conflict-start')
+text=(work/'network-checklist.txt').read_text().replace('2. Check link status.','2. Check the network adapter link lights.'); write('network-checklist.txt',text); add_commit(['network-checklist.txt'],'Clarify link status check')
+run('switch','conflict-start'); run('switch','-c','alternate-link-check')
+text=(work/'network-checklist.txt').read_text().replace('2. Check link status.','2. Verify the Ethernet or Wi-Fi connection is active.'); write('network-checklist.txt',text); add_commit(['network-checklist.txt'],'Revise connection check')
+run('switch','main')
+proc=subprocess.run(['git','merge','alternate-link-check'],cwd=work,stdout=subprocess.PIPE,stderr=subprocess.PIPE,env=env)
+if proc.returncode==0: raise RuntimeError('Expected a conflict but merge succeeded')
+capture(19)
+text=(work/'network-checklist.txt').read_text(); start=text.index('<<<<<<< HEAD'); end=text.index('>>>>>>> alternate-link-check')+len('>>>>>>> alternate-link-check')
+text=text[:start]+'2. Verify the network connection and check the adapter link status.'+text[end:]; write('network-checklist.txt',text); add_commit(['network-checklist.txt'],'Resolve link check conflict'); capture(20)
+# Also keep the transition names from the specification available for instructors and direct links.
+alias('lab-03-start.zip','part1-start')
+alias('lab-06-start.zip','after-first-commit')
+alias('lab-11-start.zip','m2-complete')
+alias('lab-12-start.zip','branching-start')
+alias('lab-16-start.zip','divergent-branches')
+alias('lab-17-start.zip','pre-merge')
+alias('lab-18-start.zip','conflict-start')
+# Lab 19 has its own unresolved-conflict recovery point.
+shutil.copyfile(OUT/'lab-19-start.zip',OUT/'conflict-pending.zip')
+shutil.rmtree(work.parent)

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="CIS-1160 Git tutorial, Lab 19: Resolve a Merge Conflict"><title>Lab 19: Resolve a Merge Conflict | CIS-1160 Git</title><link rel="stylesheet" href="../assets/site.css"></head>
+<body><a class="skip-link" href="#main">Skip to lesson</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark">G</span><span>CIS-1160 <b>Git Practice</b></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Labs <span aria-hidden="true">☰</span></button><nav id="site-nav" class="site-nav"><a href="../index.html">Overview</a><a href="../index.html#part-1">Fundamentals</a><a href="../index.html#part-2">Branching &amp; merging</a></nav></header>
+<div class="layout"><aside class="sidebar"><div class="side-label">Tutorial map</div><a class="part-link" href="../index.html#part-1">Part 1 · Fundamentals</a><a class="lab-link " href="lab-01.html"><span>01</span>Git Setup</a><a class="lab-link " href="lab-02.html"><span>02</span>Create Your First Repository</a><a class="lab-link " href="lab-03.html"><span>03</span>Create a Project File</a><a class="lab-link " href="lab-04.html"><span>04</span>Stage Your First File</a><a class="lab-link " href="lab-05.html"><span>05</span>Make Your First Commit</a><a class="lab-link " href="lab-06.html"><span>06</span>Make and Inspect a Change</a><a class="lab-link " href="lab-07.html"><span>07</span>Stage and Commit the Change</a><a class="lab-link " href="lab-08.html"><span>08</span>Staged vs. Unstaged Changes</a><a class="lab-link " href="lab-09.html"><span>09</span>Add a README</a><a class="lab-link " href="lab-10.html"><span>10</span>Inspect Repository History</a><a class="part-link" href="../index.html#part-2">Part 2 · Branching &amp; merging</a><a class="lab-link " href="lab-11.html"><span>11</span>Understanding Branches</a><a class="lab-link " href="lab-12.html"><span>12</span>Create a Branch</a><a class="lab-link " href="lab-13.html"><span>13</span>Work on a Branch</a><a class="lab-link " href="lab-14.html"><span>14</span>Switch Between Branches</a><a class="lab-link " href="lab-15.html"><span>15</span>Create Diverging Work</a><a class="lab-link " href="lab-16.html"><span>16</span>View Branch History</a><a class="lab-link " href="lab-17.html"><span>17</span>Merge Branches</a><a class="lab-link " href="lab-18.html"><span>18</span>Create a Merge Conflict</a><a class="lab-link active" href="lab-19.html"><span>19</span>Resolve a Merge Conflict</a><a class="lab-link " href="lab-20.html"><span>20</span>M3 Checkpoint</a></aside>
+<main id="main" class="lesson"><div class="crumb"><a href="../index.html">CIS-1160 Git Practice</a><span>/</span><span>Lab 19</span></div><div class="lesson-kicker">Part 2 · Branching and merging</div><h1>Lab 19: Resolve a Merge Conflict</h1><div class="lesson-progress"><span>Lab 19 of 20</span><div class="progress-track"><span style="width:95%"></span></div></div>
+<section class="lesson-section goal-section"><h2>Goal</h2><p>Resolve the conflict and complete the merge.</p>
+<p>Open:</p>
+<pre><code>network-checklist.txt</code></pre>
+<p>Git will mark the conflicting area with markers similar to:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+2. Check the network adapter link lights.
+=======
+2. Verify the Ethernet or Wi-Fi connection is active.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; alternate-link-check</code></pre></section>
+<section class="lesson-section "><h2>Instructions</h2><h3>What the Markers Mean</h3><ul>
+<li><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> begins the version from your current branch</li>
+<li><code>=======</code> separates the competing versions</li>
+<li><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; alternate-link-check</code> ends the version from the branch being merged</li>
+</ul>
+<p>Git is asking you to decide what the final file should contain.</p>
+<p>You may:</p>
+<ul>
+<li>keep the first version</li>
+<li>keep the second version</li>
+<li>combine/rewrite the two versions</li>
+</ul>
+<p>For this exercise, replace the entire conflict block with:</p>
+<pre><code>2. Verify the network connection and check the adapter link status.</code></pre>
+<p>Make sure all conflict markers are removed.</p>
+<p>Save the file.</p>
+<p>Check:</p>
+<pre><code>git status</code></pre>
+<p>Stage the resolved file:</p>
+<pre><code>git add network-checklist.txt</code></pre>
+<p>Complete the merge:</p>
+<pre><code>git commit -m &quot;Resolve link check conflict&quot;</code></pre>
+<p>Check:</p>
+<pre><code>git status</code></pre>
+<p>Then view the final history:</p>
+<pre><code>git log --graph --oneline --all</code></pre></section>
+<section class="lesson-section "><h2>Commands</h2><p class="section-intro">Use these commands as you work through the instructions. Run them in Git Bash.</p><div class="command-item"><pre><code>git status</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git add network-checklist.txt</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git commit -m &quot;Resolve link check conflict&quot;</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git status</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git log --graph --oneline --all</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>Identify conflict
+      ↓
+Edit final content
+      ↓
+Remove conflict markers
+      ↓
+git add
+      ↓
+git commit</code></pre><button class="copy-button" type="button">Copy</button></div></section>
+<section class="lesson-section notice-section"><h2>What to Notice</h2><p>A conflict did not mean the repository was broken.</p>
+<p>Git stopped because it needed a human decision.</p>
+<p>The basic conflict-resolution process is:</p>
+<pre><code>Identify conflict
+      ↓
+Edit final content
+      ↓
+Remove conflict markers
+      ↓
+git add
+      ↓
+git commit</code></pre>
+<hr></section>
+<section class="lesson-section check-section"><h2>Check Your Work</h2><p>Run git status and confirm the merge is complete with a clean working tree. Review the graph for the merge history.</p></section>
+<section class="recovery"><div class="recovery-icon" aria-hidden="true">↻</div><div><h2>Repository broken?</h2><p>This checkpoint contains the unresolved conflict produced in Lab 18. Open network-checklist.txt, remove the conflict markers, and complete the merge. Extract the ZIP, then use Git Bash in the extracted support-tools folder.</p></div><a class="button secondary" href="../checkpoints/lab-19-start.zip" download>Download Lab 19 checkpoint</a></section>
+<nav class="lesson-nav" aria-label="Previous and next lessons"><a href="lab-18.html" class="nav-card"><span>← Previous</span><strong>Lab 18: Create a Merge Conflict</strong></a><a href="lab-20.html" class="nav-card next"><span>Next →</span><strong>Lab 20: M3 Checkpoint</strong></a></nav><footer class="site-footer">CIS-1160 Introduction to Information Systems · Git fundamentals and branching</footer></main></div><script src="../assets/site.js"></script></body></html>
