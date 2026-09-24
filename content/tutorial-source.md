@@ -1,43 +1,4 @@
-# CIS-1160 Git Practice Tutorial
-## Content and Build Specification
-
-**Course:** CIS-1160 Introduction to Information Systems  
-**Purpose:** Source content and design specification for a self-hosted Git tutorial  
-**Audience:** First-year Computer Networking Technology students  
-**Primary environment:** Git for Windows using Git Bash  
-
----
-
-# 1. Purpose
-
-This tutorial provides a focused introduction to Git for CIS-1160. It is designed to replace the portions of Git Immersion currently used in the course while removing unrelated programming dependencies and topics that are not required by the course outcomes.
-
-The tutorial should be:
-
-- self-contained
-- beginner-friendly
-- usable on a new computer without previous lab files
-- focused on Git rather than programming
-- based on simple text files relevant to technical/support work
-- suitable for guided classroom use and independent distance learning
-- easy to resume from checkpoints if a repository becomes unusable
-
-Students should not need Ruby, Rake, or programming knowledge.
-
----
-
-# 2. Learning Outcomes Supported
-
-The tutorial supports the CIS-1160 Git-related outcomes currently addressed through M2 and M3:
-
-- Explain the purpose of version control
-- Create and manage a local Git repository
-- Save and manage changes using Git
-- Inspect repository status and history
-- Create and manage branches
-- Merge changes between branches
-- Identify and resolve a merge conflict
-- Explain how branching and merging support collaborative work
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬ÔŒ%L´ÄÄØÀ¥ÐAÉ…Ñ¥”QÕÑ½É¥…°(ŒŒ½¹Ñ•¹Ð…¹	Õ¥±MÁ•¥™¥…Ñ¥½¸((¨©½ÕÉÍ”è¨¨%L´ÄÄØÀ%¹ÑÉ½‘ÕÑ¥½¸Ñ¼%¹™½Éµ…Ñ¥½¸MåÍÑ•µÌ€€(¨©AÕÉÁ½Í”è¨¨M½ÕÉ”½¹Ñ•¹Ð…¹‘•Í¥¸ÍÁ•¥™¥…Ñ¥½¸™½È„Í•±˜µ¡½ÍÑ•¥ÐÑÕÑ½É¥…°€€(¨©Õ‘¥•¹”è¨¨¥ÉÍÐµå•…È½µÁÕÑ•È9•ÑÝ½É­¥¹œQ•¡¹½±½äÍÑÕ‘•¹ÑÌ€€(¨©AÉ¥µ…Éä•¹Ù¥É½¹µ•¹Ðè¨¨¥Ð™½È]¥¹‘½ÝÌÕÍ¥¹œ¥Ð	…Í €€((´´´((Œ€Ä¸AÕÉÁ½Í”()Q¡¥ÌÑÕÑ½É¥…°ÁÉ½Ù¥‘•Ì„™½ÕÍ•¥¹ÑÉ½‘ÕÑ¥½¸Ñ¼¥Ð™½È%L´ÄÄØÀ¸%Ð¥Ì‘•Í¥¹•Ñ¼É•Á±…”Ñ¡”Á½ÉÑ¥½¹Ì½˜¥Ð%µµ•ÉÍ¥½¸ÕÉÉ•¹Ñ±äÕÍ•¥¸Ñ¡”½ÕÉÍ”Ý¡¥±”É•µ½Ù¥¹œÕ¹É•±…Ñ•ÁÉ½É…µµ¥¹œ‘•Á•¹‘•¹¥•Ì…¹Ñ½Á¥ÌÑ¡…Ð…É”¹½ÐÉ•ÅÕ¥É•‰äÑ¡”½ÕÉÍ”½ÕÑ½µ•Ì¸()Q¡”ÑÕÑ½É¥…°Í¡½Õ±‰”è((´Í•±˜µ½¹Ñ…¥¹•(´‰•¥¹¹•Èµ™É¥•¹‘±ä(´ÕÍ…‰±”½¸„¹•Ü½µÁÕÑ•ÈÝ¥Ñ¡½ÕÐÁÉ•Ù¥½ÕÌ±…ˆ™¥±•Ì(´™½ÕÍ•½¸¥ÐÉ…Ñ¡•ÈÑ¡…¸ÁÉ½É…µµ¥¹œ(´‰…Í•½¸Í¥µÁ±”Ñ•áÐ™¥±•ÌÉ•±•Ù…¹ÐÑ¼Ñ•¡¹¥…°½ÍÕÁÁ½ÉÐÝ½É¬(´ÍÕ¥Ñ…‰±”™½ÈÕ¥‘•±…ÍÍÉ½½´ÕÍ”…¹¥¹‘•Á•¹‘•¹Ð‘¥ÍÑ…¹”±•…É¹¥¹œ(´•…ÍäÑ¼É•ÍÕµ”™É½´¡•­Á½¥¹ÑÌ¥˜„É•Á½Í¥Ñ½Éä‰•½µ•ÌÕ¹ÕÍ…‰±”()MÑÕ‘•¹ÑÌÍ¡½Õ±¹½Ð¹••IÕ‰ä°I…­”°½ÈÁÉ½É…µµ¥¹œ­¹½Ý±•‘”¸((´´´((Œ€È¸1•…É¹¥¹œ=ÕÑ½µ•ÌMÕÁÁ½ÉÑ•()Q¡”ÑÕÑ½É¥…°ÍÕÁÁ½ÉÑÌÑ¡”%L´ÄÄØÀ¥ÐµÉ•±…Ñ•½ÕÑ½µ•ÌÕÉÉ•¹Ñ±ä…‘‘É•ÍÍ•Ñ¡É½Õ 4È…¹4Ìè((´áÁ±…¥¸Ñ¡”ÁÕÉÁ½Í”½˜Ù•ÉÍ¥½¸½¹ÑÉ½°(´É•…Ñ”…¹µ…¹…”„±½…°¥ÐÉ•Á½Í¥Ñ½Éä(´M…Ù”…¹µ…¹…”¡…¹•ÌÕÍ¥¹œ¥Ð(´%¹ÍÁ•ÐÉ•Á½Í¥Ñ½ÉäÍÑ…ÑÕÌ…¹¡¥ÍÑ½Éä(´É•…Ñ”…¹µ…¹…”‰É…¹¡•Ì(´5•É”¡…¹•Ì‰•ÑÝ••¸‰É…¹¡•Ì(´%‘•¹Ñ¥™ä…¹É•Í½±Ù”„µ•É”½¹™±¥Ð(´áÁ±…¥¸¡½Ü‰É…¹¡¥¹œ…¹µ•É¥¹œÍÕÁÁ½ÉÐ½±±…‰½É…Ñ¥Ù”Ý½Ë[h‘éì¶»§q«^w
 
 The tutorial should teach concepts before requiring students to demonstrate them.
 
@@ -117,94 +78,7 @@ Undo/reset/revert/amend can be developed later as optional material if required.
 ## Part 1: Git Fundamentals
 
 1. Git Setup
-2. Create Your First Repository
-3. Check Repository Status
-4. Make Your First Commit
-5. Make and Inspect a Change
-6. Stage a Change
-7. Commit the Change
-8. Staged vs. Unstaged Changes
-9. View Repository History
-10. M2 Checkpoint
-
-## Part 2: Branching and Merging
-
-11. Understanding Branches
-12. Create a Branch
-13. Work on a Branch
-14. Switch Between Branches
-15. Create Diverging Work
-16. View Branch History
-17. Merge Branches
-18. Create a Merge Conflict
-19. Resolve a Merge Conflict
-20. M3 Checkpoint
-
-Each page should use a predictable structure:
-
-- Goal
-- Why this matters
-- Starting point
-- Instructions
-- Commands
-- What to notice
-- Check your work
-- Next
-
----
-
-# 5. Part 1: Git Fundamentals
-
-# Lab 1: Git Setup
-
-## Goal
-
-Install Git and confirm that it is ready to use.
-
-## Install Git
-
-Install the standard version of Git for Windows.
-
-Open **Git Bash** after installation.
-
-Verify Git:
-
-```bash
-git --version
-```
-
-A Git version number should appear.
-
-## Configure Your Identity
-
-Replace the example information with your own:
-
-```bash
-git config --global user.name "First Last"
-git config --global user.email "you@example.com"
-```
-
-For the CIS-1160 lab environment, use:
-
-```bash
-git config --global core.autocrlf false
-```
-
-## Verify Configuration
-
-```bash
-git config --global --list
-```
-
-## What to Notice
-
-Git stores information about who creates each commit.
-
-The `--global` option applies the setting to repositories used by your Windows user account.
-
-You do not need to manually edit `.gitconfig`.
-
-## Check Your Work
+2. Create Your First RepositoryYªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Ô(Ì¸¡•¬I•Á½Í¥Ñ½ÉäMÑ…ÑÕÌ(Ð¸5…­”e½ÕÈ¥ÉÍÐ½µµ¥Ð(Ô¸5…­”…¹%¹ÍÁ•Ð„¡…¹”(Ø¸MÑ…”„¡…¹”(Ü¸½µµ¥ÐÑ¡”¡…¹”(à¸MÑ…•ÙÌ¸U¹ÍÑ…•¡…¹•Ì(ä¸Y¥•ÜI•Á½Í¥Ñ½Éä!¥ÍÑ½Éä(ÄÀ¸4È¡•­Á½¥¹Ð((ŒŒA…ÉÐ€Èè	É…¹¡¥¹œ…¹5•É¥¹œ((ÄÄ¸U¹‘•ÉÍÑ…¹‘¥¹œ	É…¹¡•Ì(ÄÈ¸É•…Ñ”„	É…¹ (ÄÌ¸]½É¬½¸„	É…¹ (ÄÐ¸MÝ¥Ñ 	•ÑÝ••¸	É…¹¡•Ì(ÄÔ¸É•…Ñ”¥Ù•É¥¹œ]½É¬(ÄØ¸Y¥•Ü	É…¹ !¥ÍÑ½Éä(ÄÜ¸5•É”	É…¹¡•Ì(Äà¸É•…Ñ”„5•É”½¹™±¥Ð(Ää¸I•Í½±Ù”„5•É”½¹™±¥Ð(ÈÀ¸4Ì¡•­Á½¥¹Ð()… Á…”Í¡½Õ±ÕÍ”„ÁÉ•‘¥Ñ…‰±”ÍÑÉÕÑÕÉ”è((´½…°(´]¡äÑ¡¥Ìµ…ÑÑ•ÉÌ(´MÑ…ÉÑ¥¹œÁ½¥¹Ð(´%¹ÍÑÉÕÑ¥½¹Ì(´½µµ…¹‘Ì(´]¡…ÐÑ¼¹½Ñ¥”(´¡•¬å½ÕÈÝ½É¬(´9•áÐ((´´´((Œ€Ô¸A…ÉÐ€Äè¥ÐÕ¹‘…µ•¹Ñ…±Ì((Œ1…ˆ€Äè¥ÐM•ÑÕÀ((ŒŒ½…°()%¹ÍÑ…±°¥Ð…¹½¹™¥É´Ñ¡…Ð¥Ð¥ÌÉ•…‘äÑ¼ÕÍ”¸((ŒŒ%¹ÍÑ…±°¥Ð()%¹ÍÑ…±°Ñ¡”ÍÑ…¹‘…ÉÙ•ÉÍ¥½¸½˜¥Ð™½È]¥¹‘½ÝÌ¸()=Á•¸€¨©¥Ð	…Í ¨¨…™Ñ•È¥¹ÍÑ…±±…Ñ¥½¸¸()Y•É¥™ä¥Ðè()‰…Í )¥Ð€´µÙ•ÉÍ¥½¸)€()¥ÐÙ•ÉÍ¥½¸¹Õµ‰•ÈÍ¡½Õ±…ÁÁ•…È¸((ŒŒ½¹™¥ÕÉ”e½ÕÈ%‘•¹Ñ¥Ñä()I•Á±…”Ñ¡”•á…µÁ±”¥¹™½Éµ…Ñ¥½¸Ý¥Ñ å½ÕÈ½Ý¸è()‰…Í )¥Ð½¹™¥œ€´µ±½‰…°ÕÍ•È¹¹…µ”€‰¥ÉÍÐ1…ÍÐˆ)¥Ð½¹™¥œ€´µ±½‰…°ÕÍ•È¹•µ…¥°€‰å½Õ•á…µÁ±”¹½´ˆ)€()½ÈÑ¡”%L´ÄÄØÀ±…ˆ•¹Ù¥É½¹µ•¹Ð°ÕÍ”è()‰…Í )¥Ð½¹™¥œ€´µ±½‰…°½É”¹…ÕÑ½É±˜™…±Í”)€((ŒŒY•É¥™ä½¹™¥ÕÉ…Ñ¥½¸()‰…Í )¥Ð½¹™¥œ€´µ±½‰…°€´µ±¥ÍÐ)€((ŒŒ]¡…ÐÑ¼9½Ñ¥”()¥ÐÍÑ½É•Ì¥¹™½Éµ…Ñ¥½¸…‰½ÕÐÝ¡¼É•…Ñ•Ì•… ½µµ¥Ð¸()Q¡”€´µ±½‰…±€½ÁÑ¥½¸…ÁÁ±¥•ÌÑ¡”Í•ÑÑ¥¹œÑ¼É•Á½Í¥Ñ½É¥•ÌÕÍ•‰äå½ÕÈ]¥¹‘½ÝÌÕÍ•È…½Õ¹Ð¸()e½Ô‘¼¹½Ð¹••Ñ¼µ…¹Õ…±±ä•‘¥Ð€¹¥Ñ½¹™¥€¸((ŒŒ¡•¬e½ÕÈ_[h‘éì¶»§q«^wrk
 
 You should be able to run:
 
@@ -306,125 +180,7 @@ git status
 
 Git sees the file, but it is **untracked**.
 
-The file exists in your working directory, but Git is not yet including it in a commit.
-
-This introduces three important areas:
-
-```text
-Working Directory â†’ Staging Area â†’ Repository History
-```
-
----
-
-# Lab 4: Stage Your First File
-
-## Goal
-
-Prepare a file to be included in a commit.
-
-Run:
-
-```bash
-git add network-checklist.txt
-```
-
-Then:
-
-```bash
-git status
-```
-
-## What to Notice
-
-The file has moved from **untracked** to **staged**.
-
-`git add` does not permanently save a version to repository history.
-
-It tells Git:
-
-> Include this version of the file in my next commit.
-
----
-
-# Lab 5: Make Your First Commit
-
-## Goal
-
-Create the first saved point in repository history.
-
-Run:
-
-```bash
-git commit -m "Add initial network checklist"
-```
-
-Then:
-
-```bash
-git status
-```
-
-## What to Notice
-
-The working tree should now be clean.
-
-View the history:
-
-```bash
-git log --oneline
-```
-
-You should see your first commit.
-
-## Mental Model
-
-```text
-Edit file
-   â†“
-git add
-   â†“
-Staging area
-   â†“
-git commit
-   â†“
-Repository history
-```
-
----
-
-# Lab 6: Make and Inspect a Change
-
-## Goal
-
-See how Git detects changes to a tracked file.
-
-Open `network-checklist.txt` and add:
-
-```text
-4. Test the default gateway.
-```
-
-Save the file.
-
-Run:
-
-```bash
-git status
-```
-
-Then inspect the change:
-
-```bash
-git diff
-```
-
-## What to Notice
-
-`git status` tells you that the file has changed.
-
-`git diff` shows the actual content that changed.
-
-At this point the change is in the working directory but has not been staged.
+ThYªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Õ”™¥±”•á¥ÍÑÌ¥¸å½ÕÈÝ½É­¥¹œ‘¥É•Ñ½Éä°‰ÕÐ¥Ð¥Ì¹½Ðå•Ð¥¹±Õ‘¥¹œ¥Ð¥¸„½µµ¥Ð¸()Q¡¥Ì¥¹ÑÉ½‘Õ•ÌÑ¡É•”¥µÁ½ÉÑ…¹Ð…É•…Ìè()Ñ•áÐ)]½É­¥¹œ¥É•Ñ½ÉäƒŠHMÑ…¥¹œÉ•„ƒŠHI•Á½Í¥Ñ½Éä!¥ÍÑ½Éä)€((´´´((Œ1…ˆ€ÐèMÑ…”e½ÕÈ¥ÉÍÐ¥±”((ŒŒ½…°()AÉ•Á…É”„™¥±”Ñ¼‰”¥¹±Õ‘•¥¸„½µµ¥Ð¸()IÕ¸è()‰…Í )¥Ð…‘¹•ÑÝ½É¬µ¡•­±¥ÍÐ¹ÑáÐ)€()Q¡•¸è()‰…Í )¥ÐÍÑ…ÑÕÌ)€((ŒŒ]¡…ÐÑ¼9½Ñ¥”()Q¡”™¥±”¡…Ìµ½Ù•™É½´€¨©Õ¹ÑÉ…­•¨¨Ñ¼€¨©ÍÑ…•¨¨¸()¥Ð…‘‘€‘½•Ì¹½ÐÁ•Éµ…¹•¹Ñ±äÍ…Ù”„Ù•ÉÍ¥½¸Ñ¼É•Á½Í¥Ñ½Éä¡¥ÍÑ½Éä¸()%ÐÑ•±±Ì¥Ðè((ø%¹±Õ‘”Ñ¡¥ÌÙ•ÉÍ¥½¸½˜Ñ¡”™¥±”¥¸µä¹•áÐ½µµ¥Ð¸((´´´((Œ1…ˆ€Ôè5…­”e½ÕÈ¥ÉÍÐ½µµ¥Ð((ŒŒ½…°()É•…Ñ”Ñ¡”™¥ÉÍÐÍ…Ù•Á½¥¹Ð¥¸É•Á½Í¥Ñ½Éä¡¥ÍÑ½Éä¸()IÕ¸è()‰…Í )¥Ð½µµ¥Ð€µ´€‰‘¥¹¥Ñ¥…°¹•ÑÝ½É¬¡•­±¥ÍÐˆ)€()Q¡•¸è()‰…Í )¥ÐÍÑ…ÑÕÌ)€((ŒŒ]¡…ÐÑ¼9½Ñ¥”()Q¡”Ý½É­¥¹œÑÉ•”Í¡½Õ±¹½Ü‰”±•…¸¸()Y¥•ÜÑ¡”¡¥ÍÑ½Éäè()‰…Í )¥Ð±½œ€´µ½¹•±¥¹”)€()e½ÔÍ¡½Õ±Í•”å½ÕÈ™¥ÉÍÐ½µµ¥Ð¸((ŒŒ5•¹Ñ…°5½‘•°()Ñ•áÐ)‘¥Ð™¥±”(€€ƒŠL)¥Ð…‘(€€ƒŠL)MÑ…¥¹œ…É•„(€€ƒŠL)¥Ð½µµ¥Ð(€€ƒŠL)I•Á½Í¥Ñ½Éä¡¥ÍÑ½Éä)€((´´´((Œ1…ˆ€Øè5…­”…¹%¹ÍÁ•Ð„¡…¹”((ŒŒ½…°()M•”¡½Ü¥Ð‘•Ñ•ÑÌ¡…¹•ÌÑ¼„ÑÉ…­•™¥±”¸()=Á•¸¹•ÑÝ½É¬µ¡•­±¥ÍÐ¹ÑáÑ€…¹…‘è()Ñ•áÐ(Ð¸Q•ÍÐÑ¡”‘•™…Õ±Ð…Ñ•Ý…ä¸)€()M…Ù”Ñ¡”™¥±”¸()IÕ¸è()‰…Í )¥ÐÍÑ…ÑÕÌ)€()Q¡•¸¥¹ÍÁ•ÐÑ¡”¡…¹”è()‰…Í )¥Ð‘¥™˜)€((ŒŒ]¡…ÐÑ¼9½Ñ¥”()¥ÐÍÑ…ÑÕÍ€Ñ•±±Ìå½ÔÑ¡…ÐÑ¡”™¥±”¡…Ì¡…¹•¸()¥Ð‘¥™™€Í¡½ÝÌÑ¡”…ÑÕ…°½¹Ñ•¹ÐÑ¡…Ð¡…¹•¸()ÐÑ¡¥ÌÁ½¥¹ÐÑ¡”¡…¹”¥Ì¥¸Ñ¡”Ý½É­¥¹œ‘¥É•Ñ½Éä‰ÕÐ¡…Ì¹½Ð‰—[h‘éì¶»§q«^un staged.
 
 ---
 
@@ -554,98 +310,7 @@ Add:
 
 Practice repository for CIS-1160 Git activities.
 
-This repository contains simple technical support documentation used to practise version control.
-```
-
-Save it.
-
-Check:
-
-```bash
-git status
-```
-
-Stage and commit:
-
-```bash
-git add README.md
-git commit -m "Add project README"
-```
-
----
-
-# Lab 10: Inspect Repository History
-
-## Goal
-
-Review the history you have created.
-
-Run:
-
-```bash
-git log --oneline
-```
-
-Try:
-
-```bash
-git log --stat
-```
-
-Then:
-
-```bash
-git status
-```
-
-## What to Notice
-
-Your repository now contains several commits representing changes made over time.
-
-The exact commit identifiers will differ between students.
-
-## M2 Evidence
-
-Save the evidence one folder above `support-tools` so the evidence file does not appear as an untracked project file. From inside the repository, run:
-
-```bash
-git log --oneline > ../Firstname_Lastname_M2_log.txt
-```
-
-The evidence file will be in the folder that contains `support-tools`. Students may submit the resulting text file or a screenshot showing equivalent evidence.
-
-The log should show several commits created during the fundamentals activities.
-
----
-
-# 6. Part 2: Branching and Merging
-
-# Lab 11: Understanding Branches
-
-## Goal
-
-Understand what a branch represents before creating one.
-
-Up to this point, the repository history has followed one line:
-
-```text
-A â†’ B â†’ C â†’ D
-```
-
-A branch allows another line of work to begin from an existing point:
-
-```text
-A â†’ B â†’ C â†’ D   main
-             \
-              E â†’ F   troubleshooting
-```
-
-Branches are useful when:
-
-- developing a feature
-- fixing a problem
-- experimenting
-- allowing different work to happen independently
+This repository contains simple technical support documentation used to practisYªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Õ”Ù•ÉÍ¥½¸½¹ÑÉ½°¸)€()M…Ù”¥Ð¸()¡•¬è()‰…Í )¥ÐÍÑ…ÑÕÌ)€()MÑ…”…¹½µµ¥Ðè()‰…Í )¥Ð…‘I5¹µ)¥Ð½µµ¥Ð€µ´€‰‘ÁÉ½©•ÐI5ˆ)€((´´´((Œ1…ˆ€ÄÀè%¹ÍÁ•ÐI•Á½Í¥Ñ½Éä!¥ÍÑ½Éä((ŒŒ½…°()I•Ù¥•ÜÑ¡”¡¥ÍÑ½Éäå½Ô¡…Ù”É•…Ñ•¸()IÕ¸è()‰…Í )¥Ð±½œ€´µ½¹•±¥¹”)€()QÉäè()‰…Í )¥Ð±½œ€´µÍÑ…Ð)€()Q¡•¸è()‰…Í )¥ÐÍÑ…ÑÕÌ)€((ŒŒ]¡…ÐÑ¼9½Ñ¥”()e½ÕÈÉ•Á½Í¥Ñ½Éä¹½Ü½¹Ñ…¥¹ÌÍ•Ù•É…°½µµ¥ÑÌÉ•ÁÉ•Í•¹Ñ¥¹œ¡…¹•Ìµ…‘”½Ù•ÈÑ¥µ”¸()Q¡”•á…Ð½µµ¥Ð¥‘•¹Ñ¥™¥•ÉÌÝ¥±°‘¥™™•È‰•ÑÝ••¸ÍÑÕ‘•¹ÑÌ¸((ŒŒ4ÈÙ¥‘•¹”()M…Ù”Ñ¡”•Ù¥‘•¹”½¹”™½±‘•È…‰½Ù”ÍÕÁÁ½ÉÐµÑ½½±Í€Í¼Ñ¡”•Ù¥‘•¹”™¥±”‘½•Ì¹½Ð…ÁÁ•…È…Ì…¸Õ¹ÑÉ…­•ÁÉ½©•Ð™¥±”¸É½´¥¹Í¥‘”Ñ¡”É•Á½Í¥Ñ½Éä°ÉÕ¸è()‰…Í )¥Ð±½œ€´µ½¹•±¥¹”€ø€¸¸½¥ÉÍÑ¹…µ•}1…ÍÑ¹…µ•}4É}±½œ¹ÑáÐ)€()Q¡”•Ù¥‘•¹”™¥±”Ý¥±°‰”¥¸Ñ¡”™½±‘•ÈÑ¡…Ð½¹Ñ…¥¹ÌÍÕÁÁ½ÉÐµÑ½½±Í€¸MÑÕ‘•¹ÑÌµ…äÍÕ‰µ¥ÐÑ¡”É•ÍÕ±Ñ¥¹œÑ•áÐ™¥±”½È„ÍÉ••¹Í¡½ÐÍ¡½Ý¥¹œ•ÅÕ¥Ù…±•¹Ð•Ù¥‘•¹”¸()Q¡”±½œÍ¡½Õ±Í¡½ÜÍ•Ù•É…°½µµ¥ÑÌÉ•…Ñ•‘ÕÉ¥¹œÑ¡”™Õ¹‘…µ•¹Ñ…±Ì…Ñ¥Ù¥Ñ¥•Ì¸((´´´((Œ€Ø¸A…ÉÐ€Èè	É…¹¡¥¹œ…¹5•É¥¹œ((Œ1…ˆ€ÄÄèU¹‘•ÉÍÑ…¹‘¥¹œ	É…¹¡•Ì((ŒŒ½…°()U¹‘•ÉÍÑ…¹Ý¡…Ð„‰É…¹ É•ÁÉ•Í•¹ÑÌ‰•™½É”É•…Ñ¥¹œ½¹”¸()UÀÑ¼Ñ¡¥ÌÁ½¥¹Ð°Ñ¡”É•Á½Í¥Ñ½Éä¡¥ÍÑ½Éä¡…Ì™½±±½Ý•½¹”±¥¹”è()Ñ•áÐ)ƒŠHƒŠHƒŠH)€()‰É…¹ …±±½ÝÌ…¹½Ñ¡•È±¥¹”½˜Ý½É¬Ñ¼‰•¥¸™É½´…¸•á¥ÍÑ¥¹œÁ½¥¹Ðè()Ñ•áÐ)ƒŠHƒŠHƒŠH€€µ…¥¸(€€€€€€€€€€€€p(€€€€€€€€€€€€€ƒŠH€€ÑÉ½Õ‰±•Í¡½½Ñ¥¹œ)€()	É…¹¡•Ì…É”ÕÍ•™Õ°Ý¡•¸è((´‘•Ù•±½Á¥¹œ„™•…ÑÕÉ”(´™¥á¥¹œ„ÁÉ½‰±•´(´•áÁ•É¥µ•¹Ñ¥¹œ(´…±±½Ý¥¹œ‘¥™™•É•¹ÐÝ½É¬Ñ¿[h‘éì¶»§q«^thappen independently
 
 A branch is not a separate repository.
 
@@ -780,104 +445,7 @@ These commits were created while you were on the `troubleshooting` branch.
 
 # Lab 14: Switch Between Branches
 
-## Goal
-
-See that branches can contain different versions of files.
-
-Check your current branch:
-
-```bash
-git branch
-```
-
-Switch to `main`:
-
-```bash
-git switch main
-```
-
-Open `network-checklist.txt`.
-
-## What to Notice
-
-The changes made on `troubleshooting` are not present on `main`.
-
-Nothing has been deleted.
-
-Git changed the working files to match the branch you selected.
-
-Switch back:
-
-```bash
-git switch troubleshooting
-```
-
-Inspect the file again.
-
-Then return to:
-
-```bash
-git switch main
-```
-
----
-
-# Lab 15: Create Diverging Work
-
-## Goal
-
-Create a different change on `main` so that `main` and `troubleshooting` contain independent work.
-
-## Instructions
-
-You should currently be on `main`. Verify the current branch:
-
-```bash
-git branch
-```
-
-The `*` should be beside `main`.
-
-Open `README.md` and add:
-
-```markdown
-## Purpose
-
-These files support a repeatable network troubleshooting process.
-```
-
-Save the file. Check that Git sees the change:
-
-```bash
-git status
-```
-
-Stage and commit the README change:
-
-```bash
-git add README.md
-git commit -m "Document repository purpose"
-```
-
-## What to Notice
-
-The branches now contain different commits:
-
-- `main` contains the README change.
-- `troubleshooting` contains the additional network-checklist changes.
-
-Do not merge them yet. Lab 16 will visualize the divergence first.
-
-## Check Your Work
-
-Run:
-
-```bash
-git branch
-git status
-```
-
-Confirm that `main` is current, `troubleshooting` still exists, and the working tree is clean.
+## GYªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Õ½…°()M•”Ñ¡…Ð‰É…¹¡•Ì…¸½¹Ñ…¥¸‘¥™™•É•¹ÐÙ•ÉÍ¥½¹Ì½˜™¥±•Ì¸()¡•¬å½ÕÈÕÉÉ•¹Ð‰É…¹ è()‰…Í )¥Ð‰É…¹ )€()MÝ¥Ñ Ñ¼µ…¥¹€è()‰…Í )¥ÐÍÝ¥Ñ µ…¥¸)€()=Á•¸¹•ÑÝ½É¬µ¡•­±¥ÍÐ¹ÑáÑ€¸((ŒŒ]¡…ÐÑ¼9½Ñ¥”()Q¡”¡…¹•Ìµ…‘”½¸ÑÉ½Õ‰±•Í¡½½Ñ¥¹€…É”¹½ÐÁÉ•Í•¹Ð½¸µ…¥¹€¸()9½Ñ¡¥¹œ¡…Ì‰••¸‘•±•Ñ•¸()¥Ð¡…¹•Ñ¡”Ý½É­¥¹œ™¥±•ÌÑ¼µ…Ñ Ñ¡”‰É…¹ å½ÔÍ•±•Ñ•¸()MÝ¥Ñ ‰…¬è()‰…Í )¥ÐÍÝ¥Ñ ÑÉ½Õ‰±•Í¡½½Ñ¥¹œ)€()%¹ÍÁ•ÐÑ¡”™¥±”……¥¸¸()Q¡•¸É•ÑÕÉ¸Ñ¼è()‰…Í )¥ÐÍÝ¥Ñ µ…¥¸)€((´´´((Œ1…ˆ€ÄÔèÉ•…Ñ”¥Ù•É¥¹œ]½É¬((ŒŒ½…°()É•…Ñ”„‘¥™™•É•¹Ð¡…¹”½¸µ…¥¹€Í¼Ñ¡…Ðµ…¥¹€…¹ÑÉ½Õ‰±•Í¡½½Ñ¥¹€½¹Ñ…¥¸¥¹‘•Á•¹‘•¹ÐÝ½É¬¸((ŒŒ%¹ÍÑÉÕÑ¥½¹Ì()e½ÔÍ¡½Õ±ÕÉÉ•¹Ñ±ä‰”½¸µ…¥¹€¸Y•É¥™äÑ¡”ÕÉÉ•¹Ð‰É…¹ è()‰…Í )¥Ð‰É…¹ )€()Q¡”€©€Í¡½Õ±‰”‰•Í¥‘”µ…¥¹€¸()=Á•¸I5¹µ‘€…¹…‘è()µ…É­‘½Ý¸(ŒŒAÕÉÁ½Í”()Q¡•Í”™¥±•ÌÍÕÁÁ½ÉÐ„É•Á•…Ñ…‰±”¹•ÑÝ½É¬ÑÉ½Õ‰±•Í¡½½Ñ¥¹œÁÉ½•ÍÌ¸)€()M…Ù”Ñ¡”™¥±”¸¡•¬Ñ¡…Ð¥ÐÍ••ÌÑ¡”¡…¹”è()‰…Í )¥ÐÍÑ…ÑÕÌ)€()MÑ…”Ñ¡”I5¡…¹”è()‰…Í )¥Ð…‘I5¹µ)€()½µµ¥ÐÑ¡”ÍÑ…•¡…¹”è()‰…Í )¥Ð½µµ¥Ð€µ´€‰½Õµ•¹ÐÉ•Á½Í¥Ñ½ÉäÁÕÉÁ½Í”ˆ)€((ŒŒ]¡…ÐÑ¼9½Ñ¥”()Q¡”‰É…¹¡•Ì¹½Ü½¹Ñ…¥¸‘¥™™•É•¹Ð½µµ¥ÑÌè((´µ…¥¹€½¹Ñ…¥¹ÌÑ¡”I5¡…¹”¸(´ÑÉ½Õ‰±•Í¡½½Ñ¥¹€½¹Ñ…¥¹ÌÑ¡”…‘‘¥Ñ¥½¹…°¹•ÑÝ½É¬µ¡•­±¥ÍÐ¡…¹•Ì¸()¼¹½Ðµ•É”Ñ¡•´å•Ð¸1…ˆ€ÄØÝ¥±°Ù¥ÍÕ…±¥é”Ñ¡”‘¥Ù•É•¹”™¥ÉÍÐ¸((ŒŒ¡•¬e½ÕÈ]½É¬()IÕ¸è()‰…Í )¥Ð‰É…¹ )¥ÐÍÑ…ÑÕÌ)€()½¹™¥É´Ñ¡…Ðµ…¥¹€¥ÌÕÉÉ•¹Ð°ÑÉ½Õ‰±•Í¡½½Ñ¥¹€ÍÑ¥±°•á¥ÍÑÌ°…¹Ñ¡”Ý½É­¥¹œƒ[h‘éì¶»§q«^tree is clean.
 
 # Lab 16: View Branch History
 
@@ -979,91 +547,7 @@ git switch main
 git status
 ```
 
-The working tree should be clean.
-
-## Step 2: Create the Alternate Branch
-
-Before changing `main`, create and switch to `alternate-link-check`:
-
-```bash
-git switch -c alternate-link-check
-```
-
-Open `network-checklist.txt`. Find this line:
-
-```text
-2. Check link status.
-```
-
-Change it to:
-
-```text
-2. Verify the Ethernet or Wi-Fi connection is active.
-```
-
-Save the file. Stage and commit this version:
-
-```bash
-git add network-checklist.txt
-git commit -m "Revise connection check"
-```
-
-## Step 3: Make a Different Change on `main`
-
-Switch back to `main`:
-
-```bash
-git switch main
-```
-
-Open `network-checklist.txt`. The second line should again be the original:
-
-```text
-2. Check link status.
-```
-
-Change it to:
-
-```text
-2. Check the network adapter link lights.
-```
-
-Save the file. Stage and commit this version:
-
-```bash
-git add network-checklist.txt
-git commit -m "Clarify link status check"
-```
-
-## Step 4: View the Divergence
-
-Before merging, run:
-
-```bash
-git log --graph --oneline --all
-```
-
-The `main` and `alternate-link-check` branches now contain different changes to the same original line.
-
-## Step 5: Attempt the Merge
-
-You should still be on `main`. Merge the alternate branch:
-
-```bash
-git merge alternate-link-check
-```
-
-Git should report a merge conflict in `network-checklist.txt`. Check the repository state:
-
-```bash
-git status
-```
-
-## What to Notice
-
-- Nothing is broken.
-- Both branches independently changed the same part of the same file.
-- Git cannot safely decide which version you intend to keep.
+The workiYªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Õ¹œÑÉ•”Í¡½Õ±‰”±•…¸¸((ŒŒMÑ•À€ÈèÉ•…Ñ”Ñ¡”±Ñ•É¹…Ñ”	É…¹ ()	•™½É”¡…¹¥¹œµ…¥¹€°É•…Ñ”…¹ÍÝ¥Ñ Ñ¼…±Ñ•É¹…Ñ”µ±¥¹¬µ¡•­€è()‰…Í )¥ÐÍÝ¥Ñ €µŒ…±Ñ•É¹…Ñ”µ±¥¹¬µ¡•¬)€()=Á•¸¹•ÑÝ½É¬µ¡•­±¥ÍÐ¹ÑáÑ€¸¥¹Ñ¡¥Ì±¥¹”è()Ñ•áÐ(È¸¡•¬±¥¹¬ÍÑ…ÑÕÌ¸)€()¡…¹”¥ÐÑ¼è()Ñ•áÐ(È¸Y•É¥™äÑ¡”Ñ¡•É¹•Ð½È]¤µ¤½¹¹•Ñ¥½¸¥Ì…Ñ¥Ù”¸)€()M…Ù”Ñ¡”™¥±”¸MÑ…”…¹½µµ¥ÐÑ¡¥ÌÙ•ÉÍ¥½¸è()‰…Í )¥Ð…‘¹•ÑÝ½É¬µ¡•­±¥ÍÐ¹ÑáÐ)¥Ð½µµ¥Ð€µ´€‰I•Ù¥Í”½¹¹•Ñ¥½¸¡•¬ˆ)€((ŒŒMÑ•À€Ìè5…­”„¥™™•É•¹Ð¡…¹”½¸µ…¥¹€()MÝ¥Ñ ‰…¬Ñ¼µ…¥¹€è()‰…Í )¥ÐÍÝ¥Ñ µ…¥¸)€()=Á•¸¹•ÑÝ½É¬µ¡•­±¥ÍÐ¹ÑáÑ€¸Q¡”Í•½¹±¥¹”Í¡½Õ±……¥¸‰”Ñ¡”½É¥¥¹…°è()Ñ•áÐ(È¸¡•¬±¥¹¬ÍÑ…ÑÕÌ¸)€()¡…¹”¥ÐÑ¼è()Ñ•áÐ(È¸¡•¬Ñ¡”¹•ÑÝ½É¬…‘…ÁÑ•È±¥¹¬±¥¡ÑÌ¸)€()M…Ù”Ñ¡”™¥±”¸MÑ…”…¹½µµ¥ÐÑ¡¥ÌÙ•ÉÍ¥½¸è()‰…Í )¥Ð…‘¹•ÑÝ½É¬µ¡•­±¥ÍÐ¹ÑáÐ)¥Ð½µµ¥Ð€µ´€‰±…É¥™ä±¥¹¬ÍÑ…ÑÕÌ¡•¬ˆ)€((ŒŒMÑ•À€ÐèY¥•ÜÑ¡”¥Ù•É•¹”()	•™½É”µ•É¥¹œ°ÉÕ¸è()‰…Í )¥Ð±½œ€´µÉ…Á €´µ½¹•±¥¹”€´µ…±°)€()Q¡”µ…¥¹€…¹…±Ñ•É¹…Ñ”µ±¥¹¬µ¡•­€‰É…¹¡•Ì¹½Ü½¹Ñ…¥¸‘¥™™•É•¹Ð¡…¹•ÌÑ¼Ñ¡”Í…µ”½É¥¥¹…°±¥¹”¸((ŒŒMÑ•À€ÔèÑÑ•µÁÐÑ¡”5•É”()e½ÔÍ¡½Õ±ÍÑ¥±°‰”½¸µ…¥¹€¸5•É”Ñ¡”…±Ñ•É¹…Ñ”‰É…¹ è()‰…Í )¥Ðµ•É”…±Ñ•É¹…Ñ”µ±¥¹¬µ¡•¬)€()¥ÐÍ¡½Õ±É•Á½ÉÐ„µ•É”½¹™±¥Ð¥¸¹•ÑÝ½É¬µ¡•­±¥ÍÐ¹ÑáÑ€¸¡•¬Ñ¡”É•Á½Í¥Ñ½ÉäÍÑ…Ñ”è()‰…Í )¥ÐÍÑ…ÑÕÌ)€((ŒŒ]¡…ÐÑ¼9½Ñ¥”((´9½Ñ¡¥¹œ¥Ì‰É½­•¸¸(´	½Ñ ‰É…¹¡•Ì¥¹‘•Á•¹‘•¹Ñ±ä¡…¹•Ñ¡”Í…µ”Á…ÉÐ½˜Ñ¡”Í…µ”™¥±”¸(´¥Ð…¹¹½ÐÍ…™•±ä‘•¥‘”Ý¡¥ Ù•ÉÍ¥½¸å½Ôƒ[h‘éì¶»§q«^untend to keep.
 - Git has paused the merge for a human decision.
 - Lab 19 will resolve the conflict.
 
@@ -1141,106 +625,7 @@ git add network-checklist.txt
 Complete the merge:
 
 ```bash
-git commit -m "Resolve link check conflict"
-```
-
-Check:
-
-```bash
-git status
-```
-
-Then view the final history:
-
-```bash
-git log --graph --oneline --all
-```
-
-## What to Notice
-
-A conflict did not mean the repository was broken.
-
-Git stopped because it needed a human decision.
-
-The basic conflict-resolution process is:
-
-```text
-Identify conflict
-      â†“
-Edit final content
-      â†“
-Remove conflict markers
-      â†“
-git add
-      â†“
-git commit
-```
-
-## Check Your Work
-
-Run:
-
-```bash
-git status
-git branch
-git log --graph --oneline --all
-```
-
-The working tree should be clean. `git branch` should still list `alternate-link-check`, and the graph should show the separate branch work and the completed merge.
-
----
-
-# Lab 20: M3 Checkpoint
-
-## Goal
-
-Demonstrate the branching and merging work completed in Part 2.
-
-## Instructions
-
-### Review the graph
-
-Confirm that the current branch is `main` and that `alternate-link-check` is still listed:
-
-```bash
-git branch
-```
-
-Then run:
-
-```bash
-git log --graph --oneline --all
-```
-
-Inspect the separate history paths and merge before creating your evidence.
-
-### Create M3 evidence
-
-Create:
-
-```bash
-git log --graph --oneline --all > Firstname_Lastname_M3_log.txt
-```
-
-Students may submit:
-
-- the resulting `.txt` file, or
-- a screenshot clearly showing equivalent evidence
-
-The evidence should show:
-
-- commits made during the branch work
-- more than one branch/history path where applicable
-- merge history
-- the completed conflict-resolution work
-
----
-
-# 7. Checkpoint Repository Design
-
-A major feature of the web tutorial should be the ability to recover without restarting the entire sequence.
-
-Provide downloadable repository checkpoints at important transitions.
+git commit -m "Resolve link check conYªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Õ™±¥Ðˆ)€()¡•¬è()‰…Í )¥ÐÍÑ…ÑÕÌ)€()Q¡•¸Ù¥•ÜÑ¡”™¥¹…°¡¥ÍÑ½Éäè()‰…Í )¥Ð±½œ€´µÉ…Á €´µ½¹•±¥¹”€´µ…±°)€((ŒŒ]¡…ÐÑ¼9½Ñ¥”()½¹™±¥Ð‘¥¹½Ðµ•…¸Ñ¡”É•Á½Í¥Ñ½ÉäÝ…Ì‰É½­•¸¸()¥ÐÍÑ½ÁÁ•‰•…ÕÍ”¥Ð¹••‘•„¡Õµ…¸‘•¥Í¥½¸¸()Q¡”‰…Í¥Œ½¹™±¥ÐµÉ•Í½±ÕÑ¥½¸ÁÉ½•ÍÌ¥Ìè()Ñ•áÐ)%‘•¹Ñ¥™ä½¹™±¥Ð(€€€€€ƒŠL)‘¥Ð™¥¹…°½¹Ñ•¹Ð(€€€€€ƒŠL)I•µ½Ù”½¹™±¥Ðµ…É­•ÉÌ(€€€€€ƒŠL)¥Ð…‘(€€€€€ƒŠL)¥Ð½µµ¥Ð)€((ŒŒ¡•¬e½ÕÈ]½É¬()IÕ¸è()‰…Í )¥ÐÍÑ…ÑÕÌ)¥Ð‰É…¹ )¥Ð±½œ€´µÉ…Á €´µ½¹•±¥¹”€´µ…±°)€()Q¡”Ý½É­¥¹œÑÉ•”Í¡½Õ±‰”±•…¸¸¥Ð‰É…¹¡€Í¡½Õ±ÍÑ¥±°±¥ÍÐ…±Ñ•É¹…Ñ”µ±¥¹¬µ¡•­€°…¹Ñ¡”É…Á Í¡½Õ±Í¡½ÜÑ¡”Í•Á…É…Ñ”‰É…¹ Ý½É¬…¹Ñ¡”½µÁ±•Ñ•µ•É”¸((´´´((Œ1…ˆ€ÈÀè4Ì¡•­Á½¥¹Ð((ŒŒ½…°()•µ½¹ÍÑÉ…Ñ”Ñ¡”‰É…¹¡¥¹œ…¹µ•É¥¹œÝ½É¬½µÁ±•Ñ•¥¸A…ÉÐ€È¸((ŒŒ%¹ÍÑÉÕÑ¥½¹Ì((ŒŒŒI•Ù¥•ÜÑ¡”É…Á ()IÕ¸è()‰…Í )¥Ð±½œ€´µÉ…Á €´µ½¹•±¥¹”€´µ…±°)€()%¹ÍÁ•ÐÑ¡”‰É…¹¡¥¹œ…¹µ•É”¡¥ÍÑ½Éä‰•™½É”É•…Ñ¥¹œå½ÕÈ•Ù¥‘•¹”™¥±”¸((ŒŒŒÉ•…Ñ”4Ì•Ù¥‘•¹”()É•…Ñ”è()‰…Í )¥Ð±½œ€´µÉ…Á €´µ½¹•±¥¹”€´µ…±°€ø¥ÉÍÑ¹…µ•}1…ÍÑ¹…µ•}4Í}±½œ¹ÑáÐ)€()MÑÕ‘•¹ÑÌµ…äÍÕ‰µ¥Ðè((´Ñ¡”É•ÍÕ±Ñ¥¹œ€¹ÑáÑ€™¥±”°½È(´„ÍÉ••¹Í¡½Ð±•…É±äÍ¡½Ý¥¹œ•ÅÕ¥Ù…±•¹Ð•Ù¥‘•¹”()Q¡”•Ù¥‘•¹”Í¡½Õ±Í¡½Üè((´½µµ¥ÑÌµ…‘”‘ÕÉ¥¹œÑ¡”‰É…¹ Ý½É¬(´‰É…¹¡¥¹œ…¹‘¥Ù•É¥¹œ¡¥ÍÑ½Éä(´µ•É”¡¥ÍÑ½Éä(´Ñ¡”½µÁ±•Ñ•½¹™±¥ÐµÉ•Í½±ÕÑ¥½¸Ý½É¬((Œ€Ü¸¡•­Á½¥¹ÐI•Á½Í¥Ñ½Éä•Í¥¸()µ…©½È™•…ÑÕÉ”½˜Ñ¡”Ý•ˆÑÕÑ½É¥…°Í¡½Õ±‰”Ñ¡”…‰¥±¥ÑäÑ¼É•½Ù•ÈÝ¥Ñ¡½ÕÐÉ•ÍÑ…ÉÑ¥¹œÑ¡”•¹Ñ¥É”Í•ÅÕ•¹”¸()AÉ½Ù¥‘”‘½Ý¹±½…‘…‰±”É•Á½Í¥Ñ½Éä¡•¯[h‘éì¶»§q«^toints at important transitions.
 
 Suggested checkpoints:
 
@@ -1329,73 +714,7 @@ shows nothing after the student says they edited a file.
 
 Confirm the file was actually saved.
 
-### Commit Says There Is Nothing to Commit
-
-Check:
-
-```bash
-git status
-```
-
-Determine whether:
-
-- the file was saved
-- the change was already committed
-- the student is in the expected repository
-- the student is on the expected branch
-
-### Merge Performed in the Wrong Direction
-
-Reinforce:
-
-> Switch to the branch that should receive the changes, then merge the other branch.
-
-### Expected Conflict Did Not Occur
-
-Both branches must independently modify the same part of the same file after their histories diverge.
-
-### Student Is in the Wrong Folder
-
-Use:
-
-```bash
-pwd
-```
-
-and:
-
-```bash
-ls
-```
-
-Confirm that the student is inside the intended repository.
-
-### Line Ending Problems
-
-For the CIS-1160 lab environment:
-
-```bash
-git config --global core.autocrlf false
-```
-
-Do not frame this as the universal Windows Git setting. It is the configuration selected for these course activities based on observed lab behaviour.
-
----
-
-# 9. Terminology to Reinforce
-
-| Term | Student-friendly meaning |
-|---|---|
-| Repository | Project folder whose changes Git tracks |
-| Working directory | Files currently being worked on |
-| Staging area | Changes selected for the next commit |
-| Commit | Saved point in repository history |
-| History | Sequence of commits |
-| Branch | Separate line of development within a repository |
-| `main` | Primary branch used in these activities |
-| Merge | Bring changes from one branch into another |
-| Merge conflict | Git needs a human to decide how competing changes should be combined |
-| HEAD | The commit/branch currently checked out |
+### Commit Says There Is Nothing to CommiYªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬ÕÐ()¡•¬è()‰…Í )¥ÐÍÑ…ÑÕÌ)€()•Ñ•Éµ¥¹”Ý¡•Ñ¡•Èè((´Ñ¡”™¥±”Ý…ÌÍ…Ù•(´Ñ¡”¡…¹”Ý…Ì…±É•…‘ä½µµ¥ÑÑ•(´Ñ¡”ÍÑÕ‘•¹Ð¥Ì¥¸Ñ¡”•áÁ•Ñ•É•Á½Í¥Ñ½Éä(´Ñ¡”ÍÑÕ‘•¹Ð¥Ì½¸Ñ¡”•áÁ•Ñ•‰É…¹ ((ŒŒŒ5•É”A•É™½Éµ•¥¸Ñ¡”]É½¹œ¥É•Ñ¥½¸()I•¥¹™½É”è((øMÝ¥Ñ Ñ¼Ñ¡”‰É…¹ Ñ¡…ÐÍ¡½Õ±É••¥Ù”Ñ¡”¡…¹•Ì°Ñ¡•¸µ•É”Ñ¡”½Ñ¡•È‰É…¹ ¸((ŒŒŒáÁ•Ñ•½¹™±¥Ð¥9½Ð=ÕÈ()	½Ñ ‰É…¹¡•ÌµÕÍÐ¥¹‘•Á•¹‘•¹Ñ±äµ½‘¥™äÑ¡”Í…µ”Á…ÉÐ½˜Ñ¡”Í…µ”™¥±”…™Ñ•ÈÑ¡•¥È¡¥ÍÑ½É¥•Ì‘¥Ù•É”¸((ŒŒŒMÑÕ‘•¹Ð%Ì¥¸Ñ¡”]É½¹œ½±‘•È()UÍ”è()‰…Í )ÁÝ)€()…¹è()‰…Í )±Ì)€()½¹™¥É´Ñ¡…ÐÑ¡”ÍÑÕ‘•¹Ð¥Ì¥¹Í¥‘”Ñ¡”¥¹Ñ•¹‘•É•Á½Í¥Ñ½Éä¸((ŒŒŒ1¥¹”¹‘¥¹œAÉ½‰±•µÌ()½ÈÑ¡”%L´ÄÄØÀ±…ˆ•¹Ù¥É½¹µ•¹Ðè()‰…Í )¥Ð½¹™¥œ€´µ±½‰…°½É”¹…ÕÑ½É±˜™…±Í”)€()¼¹½Ð™É…µ”Ñ¡¥Ì…ÌÑ¡”Õ¹¥Ù•ÉÍ…°]¥¹‘½ÝÌ¥ÐÍ•ÑÑ¥¹œ¸%Ð¥ÌÑ¡”½¹™¥ÕÉ…Ñ¥½¸Í•±•Ñ•™½ÈÑ¡•Í”½ÕÉÍ”…Ñ¥Ù¥Ñ¥•Ì‰…Í•½¸½‰Í•ÉÙ•±…ˆ‰•¡…Ù¥½ÕÈ¸((´´´((Œ€ä¸Q•Éµ¥¹½±½äÑ¼I•¥¹™½É”()ðQ•É´ðMÑÕ‘•¹Ðµ™É¥•¹‘±äµ•…¹¥¹œð)ð´´µð´´µð)ðI•Á½Í¥Ñ½ÉäðAÉ½©•Ð™½±‘•ÈÝ¡½Í”¡…¹•Ì¥ÐÑÉ…­Ìð)ð]½É­¥¹œ‘¥É•Ñ½Éäð¥±•ÌÕÉÉ•¹Ñ±ä‰•¥¹œÝ½É­•½¸ð)ðMÑ…¥¹œ…É•„ð¡…¹•ÌÍ•±•Ñ•™½ÈÑ¡”¹•áÐ½µµ¥Ðð)ð½µµ¥ÐðM…Ù•Á½¥¹Ð¥¸É•Á½Í¥Ñ½Éä¡¥ÍÑ½Éäð)ð!¥ÍÑ½ÉäðM•ÅÕ•¹”½˜½µµ¥ÑÌð)ð	É…¹ ðM•Á…É…Ñ”±¥¹”½˜‘•Ù•±½Áµ•¹ÐÝ¥Ñ¡¥¸„É•Á½Í¥Ñ½Éäð)ðµ…¥¹€ðAÉ¥µ…Éä‰É…¹ ÕÍ•¥¸Ñ¡•Í”…Ñ¥Ù¥Ñ¥•Ìð)ð5•É”ð	É¥¹œ¡…¹•Ì™É½´½¹”‰É…¹ ¥¹Ñ¼…¹½Ñ¡•Èð)ð5•É”½¹™±¥Ðð¥Ð¹••‘Ì„¡Õµ…¸Ñ¼‘•¥‘”¡½Ü½µÁ•Ñ¥¹œ¡…¹•ÌÍ¡½Õ±‰”½µ‰¥¹•ð)ð!ðQ¡”½µµ¥Ð½‰É‡[h‘éì¶»§q«^vch currently checked out |
 | Remote | Another copy of the repository stored elsewhere |
 
 Avoid describing a commit simply as "saving a file." The file is already saved on disk. A commit records a version in Git history.
@@ -1455,83 +774,7 @@ The future web tutorial should prioritize clarity over visual complexity.
 - expandable troubleshooting help
 - checkpoint download at appropriate activities
 - progress indicator
-- clear instructor/student separation if instructor notes are hosted
-
-## Commands vs. Output
-
-Never mix commands students should type with output they should expect.
-
-Example:
-
-### Run
-
-```bash
-git status
-```
-
-### You should see
-
-A message identifying the current branch and repository state.
-
-Exact output may vary.
-
-## Avoid Over-Scripting
-
-Do not require students to reproduce exact commit hashes or output that naturally differs between machines.
-
-Focus checks on meaningful state:
-
-- correct branch
-- clean/modified/staged status
-- expected file exists
-- expected commit exists
-- branch graph demonstrates the intended concept
-
----
-
-# 12. Assessment Alignment
-
-## M2 Evidence
-
-```bash
-git log --oneline > Firstname_Lastname_M2_log.txt
-```
-
-Purpose:
-
-Demonstrates that the student created and committed multiple changes to a local repository.
-
-## M3 Evidence
-
-```bash
-git log --graph --oneline --all > Firstname_Lastname_M3_log.txt
-```
-
-Purpose:
-
-Demonstrates repository history involving branching and merging.
-
-Evidence should support competency rather than reward cosmetic differences in Git output.
-
----
-
-# 13. Content Intentionally Excluded
-
-The first version of the CIS-1160 tutorial should intentionally omit:
-
-- Ruby setup and execution
-- Rake
-- custom aliases required by the tutorial
-- Git tags
-- manual `.gitconfig` editing
-- Git object database exploration
-- detached HEAD exercises
-- advanced reset exercises
-- rebasing
-- Git daemon/server setup
-- programming-specific examples
-
-These may be added later only if they directly support a CIS-1160 outcome or another course requirement.
+- clear instructor/studeYªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Õ¹ÐÍ•Á…É…Ñ¥½¸¥˜¥¹ÍÑÉÕÑ½È¹½Ñ•Ì…É”¡½ÍÑ•((ŒŒ½µµ…¹‘ÌÙÌ¸=ÕÑÁÕÐ()9•Ù•Èµ¥à½µµ…¹‘ÌÍÑÕ‘•¹ÑÌÍ¡½Õ±ÑåÁ”Ý¥Ñ ½ÕÑÁÕÐÑ¡•äÍ¡½Õ±•áÁ•Ð¸()á…µÁ±”è((ŒŒŒIÕ¸()‰…Í )¥ÐÍÑ…ÑÕÌ)€((ŒŒŒe½ÔÍ¡½Õ±Í•”()µ•ÍÍ…”¥‘•¹Ñ¥™å¥¹œÑ¡”ÕÉÉ•¹Ð‰É…¹ …¹É•Á½Í¥Ñ½ÉäÍÑ…Ñ”¸()á…Ð½ÕÑÁÕÐµ…äÙ…Éä¸((ŒŒÙ½¥=Ù•ÈµMÉ¥ÁÑ¥¹œ()¼¹½ÐÉ•ÅÕ¥É”ÍÑÕ‘•¹ÑÌÑ¼É•ÁÉ½‘Õ”•á…Ð½µµ¥Ð¡…Í¡•Ì½È½ÕÑÁÕÐÑ¡…Ð¹…ÑÕÉ…±±ä‘¥™™•ÉÌ‰•ÑÝ••¸µ…¡¥¹•Ì¸()½ÕÌ¡•­Ì½¸µ•…¹¥¹™Õ°ÍÑ…Ñ”è((´½ÉÉ•Ð‰É…¹ (´±•…¸½µ½‘¥™¥•½ÍÑ…•ÍÑ…ÑÕÌ(´•áÁ•Ñ•™¥±”•á¥ÍÑÌ(´•áÁ•Ñ•½µµ¥Ð•á¥ÍÑÌ(´‰É…¹ É…Á ‘•µ½¹ÍÑÉ…Ñ•ÌÑ¡”¥¹Ñ•¹‘•½¹•ÁÐ((´´´((Œ€ÄÈ¸ÍÍ•ÍÍµ•¹Ð±¥¹µ•¹Ð((ŒŒ4ÈÙ¥‘•¹”()‰…Í )¥Ð±½œ€´µ½¹•±¥¹”€ø¥ÉÍÑ¹…µ•}1…ÍÑ¹…µ•}4É}±½œ¹ÑáÐ)€()AÕÉÁ½Í”è()•µ½¹ÍÑÉ…Ñ•ÌÑ¡…ÐÑ¡”ÍÑÕ‘•¹ÐÉ•…Ñ•…¹½µµ¥ÑÑ•µÕ±Ñ¥Á±”¡…¹•ÌÑ¼„±½…°É•Á½Í¥Ñ½Éä¸((ŒŒ4ÌÙ¥‘•¹”()‰…Í )¥Ð±½œ€´µÉ…Á €´µ½¹•±¥¹”€´µ…±°€ø¥ÉÍÑ¹…µ•}1…ÍÑ¹…µ•}4Í}±½œ¹ÑáÐ)€()AÕÉÁ½Í”è()•µ½¹ÍÑÉ…Ñ•ÌÉ•Á½Í¥Ñ½Éä¡¥ÍÑ½Éä¥¹Ù½±Ù¥¹œ‰É…¹¡¥¹œ…¹µ•É¥¹œ¸()Ù¥‘•¹”Í¡½Õ±ÍÕÁÁ½ÉÐ½µÁ•Ñ•¹äÉ…Ñ¡•ÈÑ¡…¸É•Ý…É½Íµ•Ñ¥Œ‘¥™™•É•¹•Ì¥¸¥Ð½ÕÑÁÕÐ¸((´´´((Œ€ÄÌ¸½¹Ñ•¹Ð%¹Ñ•¹Ñ¥½¹…±±äá±Õ‘•()Q¡”™¥ÉÍÐÙ•ÉÍ¥½¸½˜Ñ¡”%L´ÄÄØÀÑÕÑ½É¥…°Í¡½Õ±¥¹Ñ•¹Ñ¥½¹…±±ä½µ¥Ðè((´IÕ‰äÍ•ÑÕÀ…¹•á•ÕÑ¥½¸(´I…­”(´ÕÍÑ½´…±¥…Í•ÌÉ•ÅÕ¥É•‰äÑ¡”ÑÕÑ½É¥…°(´¥ÐÑ…Ì(´µ…¹Õ…°€¹¥Ñ½¹™¥€•‘¥Ñ¥¹œ(´¥Ð½‰©•Ð‘…Ñ…‰…Í”•áÁ±½É…Ñ¥½¸(´‘•Ñ…¡•!•á•É¥Í•Ì(´…‘Ù…¹•É•Í•Ð•á•É¥Í•Ì(´É•‰…Í¥¹œ(´¥Ð‘…•µ½¸½Í•ÉÙ•ÈÍ•ÑÕÀ(´ÁÉ½É…µµ¥¹œµÍÁ•¥™¥Œ•á…µÁ±•Ì()Q¡•Í”µ…ä‰”…‘‘•±…Ñ•È½¹³[h‘éì¶»§q«^u if they directly support a CIS-1160 outcome or another course requirement.
 
 ---
 

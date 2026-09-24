@@ -1,46 +1,4 @@
-from pathlib import Path
-import html, re
-
-ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'content/tutorial-source.md'
-source = SOURCE.read_text(encoding='utf-8')
-
-# Keep only the 20 lab units, in the order specified by the course design.
-chunks = re.split(r'(?m)^# Lab (\d+): (.+)$', source)
-labs = []
-for i in range(1, len(chunks), 3):
-    num = int(chunks[i]); title = chunks[i+1].strip(); body = chunks[i+2]
-    if num > 20: continue
-    if num == 20:
-        body = re.split(r'(?m)^# 7\. Checkpoint Repository Design\s*$', body, maxsplit=1)[0]
-    labs.append({'num':num, 'title':title, 'body':body.strip()})
-
-assert len(labs) == 20, f'Expected 20 labs, got {len(labs)}'
-
-def split_sections(md):
-    lines=md.splitlines(); out=[]; current=('text',[]); in_fence=False
-    for line in lines:
-        if line.strip().startswith('```'):
-            in_fence=not in_fence
-            current[1].append(line)
-            continue
-        m=re.match(r'^## (.+)$', line) if not in_fence else None
-        if m:
-            out.append(current); current=(m.group(1).strip(),[])
-        else: current[1].append(line)
-    out.append(current)
-    return out
-
-def inline(s):
-    s=html.escape(s, quote=False)
-    s=re.sub(r'`([^`]+)`', r'<code>\1</code>', s)
-    s=re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
-    s=re.sub(r'\*(.+?)\*', r'<em>\1</em>', s)
-    s=re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', s)
-    return s
-
-def md_html(md):
-    lines=md.splitlines(); out=[]; para=[]; in_code=False; code=[]; in_ul=False; in_ol=False; in_quote=False
+YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Õ™É½´Á…Ñ¡±¥ˆ¥µÁ½ÉĞA…Ñ )¥µÁ½ÉĞ¡Ñµ°°É”()I==P€ôA…Ñ ¡}}™¥±•}|¤¹É•Í½±Ù” ¤¹Á…É•¹ÑÍlÅt)M=UI€ôI==P€¼€½¹Ñ•¹Ğ½ÑÕÑ½É¥…°µÍ½ÕÉ”¹µœ)Í½ÕÉ”€ôM=UI¹É•…‘}Ñ•áĞ¡•¹½‘¥¹œôÕÑ˜´àœ¤((Œ-••À½¹±äÑ¡”€ÈÀ±…ˆÕ¹¥ÑÌ°¥¸Ñ¡”½É‘•ÈÍÁ•¥™¥•‰äÑ¡”½ÕÉÍ”‘•Í¥¸¸)¡Õ¹­Ì€ôÉ”¹ÍÁ±¥Ğ¡Èœ ı´¥xŒ1…ˆ€¡q¬¤è€ ¸¬¤œ°Í½ÕÉ”¤)±…‰Ì€ômt)™½È¤¥¸É…¹” Ä°±•¸¡¡Õ¹­Ì¤°€Ì¤è(€€€¹Õ´€ô¥¹Ğ¡¡Õ¹­Ím¥t¤ìÑ¥Ñ±”€ô¡Õ¹­Ím¤¬Åt¹ÍÑÉ¥À ¤ì‰½‘ä€ô¡Õ¹­Ím¤¬Ét(€€€¥˜¹Õ´€ø€ÈÀè½¹Ñ¥¹Õ”(€€€¥˜¹Õ´€ôô€ÈÀè(€€€€€€€‰½‘ä€ôÉ”¹ÍÁ±¥Ğ¡Èœ ı´¥xŒ€İp¸¡•­Á½¥¹ĞI•Á½Í¥Ñ½Éä•Í¥¹qÌ¨œ°‰½‘ä°µ…áÍÁ±¥ĞôÄ¥lÁt(€€€±…‰Ì¹…ÁÁ•¹¡ì¹Õ´œé¹Õ´°€Ñ¥Ñ±”œéÑ¥Ñ±”°€‰½‘äœé‰½‘ä¹ÍÑÉ¥À ¥ô¤()…ÍÍ•ÉĞ±•¸¡±…‰Ì¤€ôô€ÈÀ°˜áÁ•Ñ•€ÈÀ±…‰Ì°½Ğí±•¸¡±…‰Ì¥ôœ()‘•˜ÍÁ±¥Ñ}Í•Ñ¥½¹Ì¡µ¤è(€€€±¥¹•Ìõµ¹ÍÁ±¥Ñ±¥¹•Ì ¤ì½ÕĞõmtìÕÉÉ•¹Ğô Ñ•áĞœ±mt¤ì¥¹}™•¹”õ…±Í”(€€€™½È±¥¹”¥¸±¥¹•Ìè(€€€€€€€¥˜±¥¹”¹ÍÑÉ¥À ¤¹ÍÑ…ÉÑÍİ¥Ñ  €œ¤è(€€€€€€€€€€€¥¹}™•¹”õ¹½Ğ¥¹}™•¹”(€€€€€€€€€€€ÕÉÉ•¹ÑlÅt¹…ÁÁ•¹¡±¥¹”¤(€€€€€€€€€€€½¹Ñ¥¹Õ”(€€€€€€€´õÉ”¹µ…Ñ ¡ÈxŒŒ€ ¸¬¤œ°±¥¹”¤¥˜¹½Ğ¥¹}™•¹”•±Í”9½¹”(€€€€€€€¥˜´è(€€€€€€€€€€€½ÕĞ¹…ÁÁ•¹¡ÕÉÉ•¹Ğ¤ìÕÉÉ•¹Ğô¡´¹É½ÕÀ Ä¤¹ÍÑÉ¥À ¤±mt¤(€€€€€€€•±Í”èÕÉÉ•¹ÑlÅt¹…ÁÁ•¹¡±¥¹”¤(€€€½ÕĞ¹…ÁÁ•¹¡ÕÉÉ•¹Ğ¤(€€€É•ÑÕÉ¸½ÕĞ()‘•˜¥¹±¥¹”¡Ì¤è(€€€Ìõ¡Ñµ°¹•Í…Á”¡Ì°ÅÕ½Ñ”õ…±Í”¤(€€€ÌõÉ”¹ÍÕˆ¡È€¡myt¬¥€œ°Èœñ½‘”ùpÄğ½½‘”øœ°Ì¤(€€€ÌõÉ”¹ÍÕˆ¡Èp©p¨ ¸¬ü¥p©p¨œ°ÈœñÍÑÉ½¹œùpÄğ½ÍÑÉ½¹œøœ°Ì¤(€€€ÌõÉ”¹ÍÕˆ¡Èp¨ ¸¬ü¥p¨œ°Èœñ•´ùpÄğ½•´øœ°Ì¤(€€€ÌõÉ”¹ÍÕˆ¡Èql¡myqut¬¥qup ¡mx¥t¬¥p¤œ°Èœñ„¡É•˜ô‰pÈˆùpÄğ½„øœ°Ì¤(€€€É•ÑÕÉ¸Ì()‘•˜µ‘}¡Ñµ°¡µ¤è(€€€±¥¹•Ìõµ¹ÍÁ±¥Ñ±¥¹•Ì ¤ì½ÕĞõmtìÃ[h‘éì¶»§q«^ura=[]; in_code=False; code=[]; in_ul=False; in_ol=False; in_quote=False
     def flush_para():
         nonlocal para
         if para:
@@ -68,30 +26,7 @@ def md_html(md):
             flush_para(); close_quote()
             if in_ol: out.append('</ol>'); in_ol=False
             if not in_ul: out.append('<ul>'); in_ul=True
-            out.append('<li>'+inline(re.sub(r'^\s*[-*]\s+','',line))+'</li>'); continue
-        if re.match(r'^\s*\d+\.\s+',line):
-            flush_para(); close_quote()
-            if in_ul: out.append('</ul>'); in_ul=False
-            if not in_ol: out.append('<ol>'); in_ol=True
-            out.append('<li>'+inline(re.sub(r'^\s*\d+\.\s+','',line))+'</li>'); continue
-        if line.startswith('>'):
-            flush_para(); close_lists()
-            if not in_quote: out.append('<blockquote>'); in_quote=True
-            out.append('<p>'+inline(line[1:].strip())+'</p>'); continue
-        close_quote(); para.append(line)
-    flush_para(); close_lists(); close_quote()
-    if in_code: out.append('<pre><code>'+html.escape('\n'.join(code))+'</code></pre>')
-    return '\n'.join(out)
-
-checkpoint_for = {n:(f'lab-{n:02d}-start',f'Lab {n} start') for n in range(3,21)}
-
-notice_fallback = {
-1:'Git is available in Git Bash, and the name and email settings appear in the global configuration list.',
-2:'The support-tools folder is now a repository. The status output identifies the current branch and reports that there are no commits yet.',
-3:'The new file is untracked. It exists in the working directory but is not included in repository history.',
-4:'The file is staged for the next commit. Staging prepares the selected file version; it does not create a commit.',
-5:'The commit creates the first saved point in repository history, and status reports a clean working tree.',
-6:'Status reports a modified tracked file, and diff shows the added line as an unstaged change.',
+            out.append('<li>'+inline(re.sub(r'^\s*[-*]\s+','',line))+'</li>YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Ôœ¤ì½¹Ñ¥¹Õ”(€€€€€€€¥˜É”¹µ…Ñ ¡ÈyqÌ©q­p¹qÌ¬œ±±¥¹”¤è(€€€€€€€€€€€™±ÕÍ¡}Á…É„ ¤ì±½Í•}ÅÕ½Ñ” ¤(€€€€€€€€€€€¥˜¥¹}Õ°è½ÕĞ¹…ÁÁ•¹ œğ½Õ°øœ¤ì¥¹}Õ°õ…±Í”(€€€€€€€€€€€¥˜¹½Ğ¥¹}½°è½ÕĞ¹…ÁÁ•¹ œñ½°øœ¤ì¥¹}½°õQÉÕ”(€€€€€€€€€€€½ÕĞ¹…ÁÁ•¹ œñ±¤øœ­¥¹±¥¹”¡É”¹ÍÕˆ¡ÈyqÌ©q­p¹qÌ¬œ°œœ±±¥¹”¤¤¬œğ½±¤øœ¤ì½¹Ñ¥¹Õ”(€€€€€€€¥˜±¥¹”¹ÍÑ…ÉÑÍİ¥Ñ  œøœ¤è(€€€€€€€€€€€™±ÕÍ¡}Á…É„ ¤ì±½Í•}±¥ÍÑÌ ¤(€€€€€€€€€€€¥˜¹½Ğ¥¹}ÅÕ½Ñ”è½ÕĞ¹…ÁÁ•¹ œñ‰±½­ÅÕ½Ñ”øœ¤ì¥¹}ÅÕ½Ñ”õQÉÕ”(€€€€€€€€€€€½ÕĞ¹…ÁÁ•¹ œñÀøœ­¥¹±¥¹”¡±¥¹•lÄét¹ÍÑÉ¥À ¤¤¬œğ½Àøœ¤ì½¹Ñ¥¹Õ”(€€€€€€€±½Í•}ÅÕ½Ñ” ¤ìÁ…É„¹…ÁÁ•¹¡±¥¹”¤(€€€™±ÕÍ¡}Á…É„ ¤ì±½Í•}±¥ÍÑÌ ¤ì±½Í•}ÅÕ½Ñ” ¤(€€€¥˜¥¹}½‘”è½ÕĞ¹…ÁÁ•¹ œñÁÉ”øñ½‘”øœ­¡Ñµ°¹•Í…Á” q¸œ¹©½¥¸¡½‘”¤¤¬œğ½½‘”øğ½ÁÉ”øœ¤(€€€É•ÑÕÉ¸€q¸œ¹©½¥¸¡½ÕĞ¤()¡•­Á½¥¹Ñ}™½È€ôí¸è¡˜±…ˆµí¸èÀÉ‘ôµÍÑ…ÉĞœ±˜1…ˆí¹ôÍÑ…ÉĞœ¤™½È¸¥¸É…¹” Ì°ÈÄ¥ô()¹½Ñ¥•}™…±±‰…¬€ôì(Äè¥Ğ¥Ì…Ù…¥±…‰±”¥¸¥Ğ	…Í °…¹Ñ¡”¹…µ”…¹•µ…¥°Í•ÑÑ¥¹Ì…ÁÁ•…È¥¸Ñ¡”±½‰…°½¹™¥ÕÉ…Ñ¥½¸±¥ÍĞ¸œ°(ÈèQ¡”ÍÕÁÁ½ÉĞµÑ½½±Ì™½±‘•È¥Ì¹½Ü„É•Á½Í¥Ñ½Éä¸Q¡”ÍÑ…ÑÕÌ½ÕÑÁÕĞ¥‘•¹Ñ¥™¥•ÌÑ¡”ÕÉÉ•¹Ğ‰É…¹ …¹É•Á½ÉÑÌÑ¡…ĞÑ¡•É”…É”¹¼½µµ¥ÑÌå•Ğ¸œ°(ÌèQ¡”¹•Ü™¥±”¥ÌÕ¹ÑÉ…­•¸%Ğ•á¥ÍÑÌ¥¸Ñ¡”İ½É­¥¹œ‘¥É•Ñ½Éä‰ÕĞ¥Ì¹½Ğ¥¹±Õ‘•¥¸É•Á½Í¥Ñ½Éä¡¥ÍÑ½Éä¸œ°(ĞèQ¡”™¥±”¥ÌÍÑ…•™½ÈÑ¡”¹•áĞ½µµ¥Ğ¸MÑ…¥¹œÁÉ•Á…É•ÌÑ¡”Í•±•Ñ•™¥±”Ù•ÉÍ¥½¸ì¥Ğ‘½•Ì¹½ĞÉ•…Ñ”„½µµ¥Ğ¸œ°(ÔèQ¡”½µµ¥ĞÉ•…Ñ•ÌÑ¡”™¥ÉÍĞÍ…Ù•Á½¥¹Ğ¥¸É•Á½Í¥Ñ½Éä¡¥ÍÑ½Éä°…¹ÍÑ…ÑÕÌÉ•Á½ÉÑÌ„±•…¸İ½É­¥¹œÑÉ•”¸œ°(ØèMÑ…ÑÕÌÉ•Á½ÉÑÌ„µ½‘¥™¥•ÑÉ…­•™¥±”°…¹‘¥™˜Í¡½İÌÑ¡”…‘‘•±¥¹”…Ì…¸Õ¹ÍÑ…•¡…¹—[h‘éì¶»§q«^v',
 7:'The added line is recorded in a new commit. The history now contains at least two commits.',
 8:'The file can have staged content and newer unstaged content at the same time. The two diff commands show those states separately.',
 9:'The README is a second tracked file after it is committed.',
@@ -107,23 +42,7 @@ notice_fallback = {
 19:'The conflict is resolved when you edit the final content, remove markers, stage the file, and commit the merge.',
 20:'The graph shows branch work, merge history, and the completed conflict resolution.'}
 check_fallback = {
-1:'Both commands finish without an error, and the configuration list includes the values you entered.',
-2:'Run git status. It should show a valid repository with no commits yet.',
-3:'Run git status and confirm network-checklist.txt is listed as untracked.',
-4:'Run git status and confirm network-checklist.txt is staged for commit.',
-5:'Run git status and confirm a clean working tree. Run git log --oneline and confirm one commit appears.',
-6:'Run git status and git diff. Confirm the new gateway line appears in the diff.',
-7:'Run git log --oneline and confirm at least two commits appear.',
-8:'Run git status, git diff, and git diff --staged. Confirm each shows the corresponding unstaged or staged line, then complete the commit.',
-9:'Run git status and confirm a clean working tree after the README commit.',
-10:'Run git log --oneline and git status. The log should show several commits and the working tree should be clean.',
-11:'Run git branch and git status. Confirm the asterisk identifies the current branch.',
-12:'Run git branch and git status. Confirm troubleshooting is the current branch.',
-13:'Run git log --oneline and confirm your two troubleshooting commits appear.',
-14:'Open the checklist on main and troubleshooting. The additional two lines should appear only on troubleshooting before the merge.',
-15:'Run git branch and git log --oneline. Confirm each branch contains its own recent work.',
-16:'Run git log --graph --oneline --all and confirm the output shows the branches diverging.',
-17:'Open network-checklist.txt on main and confirm the troubleshooting additions are present.',
+1:'Both commands finish without an error, anYªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬ÕÑ¡”½¹™¥ÕÉ…Ñ¥½¸±¥ÍĞ¥¹±Õ‘•ÌÑ¡”Ù…±Õ•Ìå½Ô•¹Ñ•É•¸œ°(ÈèIÕ¸¥ĞÍÑ…ÑÕÌ¸%ĞÍ¡½Õ±Í¡½Ü„Ù…±¥É•Á½Í¥Ñ½Éäİ¥Ñ ¹¼½µµ¥ÑÌå•Ğ¸œ°(ÌèIÕ¸¥ĞÍÑ…ÑÕÌ…¹½¹™¥É´¹•Ñİ½É¬µ¡•­±¥ÍĞ¹ÑáĞ¥Ì±¥ÍÑ•…ÌÕ¹ÑÉ…­•¸œ°(ĞèIÕ¸¥ĞÍÑ…ÑÕÌ…¹½¹™¥É´¹•Ñİ½É¬µ¡•­±¥ÍĞ¹ÑáĞ¥ÌÍÑ…•™½È½µµ¥Ğ¸œ°(ÔèIÕ¸¥ĞÍÑ…ÑÕÌ…¹½¹™¥É´„±•…¸İ½É­¥¹œÑÉ•”¸IÕ¸¥Ğ±½œ€´µ½¹•±¥¹”…¹½¹™¥É´½¹”½µµ¥Ğ…ÁÁ•…ÉÌ¸œ°(ØèIÕ¸¥ĞÍÑ…ÑÕÌ…¹¥Ğ‘¥™˜¸½¹™¥É´Ñ¡”¹•Ü…Ñ•İ…ä±¥¹”…ÁÁ•…ÉÌ¥¸Ñ¡”‘¥™˜¸œ°(ÜèIÕ¸¥Ğ±½œ€´µ½¹•±¥¹”…¹½¹™¥É´…Ğ±•…ÍĞÑİ¼½µµ¥ÑÌ…ÁÁ•…È¸œ°(àèIÕ¸¥ĞÍÑ…ÑÕÌ°¥Ğ‘¥™˜°…¹¥Ğ‘¥™˜€´µÍÑ…•¸½¹™¥É´•… Í¡½İÌÑ¡”½ÉÉ•ÍÁ½¹‘¥¹œÕ¹ÍÑ…•½ÈÍÑ…•±¥¹”°Ñ¡•¸½µÁ±•Ñ”Ñ¡”½µµ¥Ğ¸œ°(äèIÕ¸¥ĞÍÑ…ÑÕÌ…¹½¹™¥É´„±•…¸İ½É­¥¹œÑÉ•”…™Ñ•ÈÑ¡”I5½µµ¥Ğ¸œ°(ÄÀèIÕ¸¥Ğ±½œ€´µ½¹•±¥¹”…¹¥ĞÍÑ…ÑÕÌ¸Q¡”±½œÍ¡½Õ±Í¡½ÜÍ•Ù•É…°½µµ¥ÑÌ…¹Ñ¡”İ½É­¥¹œÑÉ•”Í¡½Õ±‰”±•…¸¸œ°(ÄÄèIÕ¸¥Ğ‰É…¹ …¹¥ĞÍÑ…ÑÕÌ¸½¹™¥É´Ñ¡”…ÍÑ•É¥Í¬¥‘•¹Ñ¥™¥•ÌÑ¡”ÕÉÉ•¹Ğ‰É…¹ ¸œ°(ÄÈèIÕ¸¥Ğ‰É…¹ …¹¥ĞÍÑ…ÑÕÌ¸½¹™¥É´ÑÉ½Õ‰±•Í¡½½Ñ¥¹œ¥ÌÑ¡”ÕÉÉ•¹Ğ‰É…¹ ¸œ°(ÄÌèIÕ¸¥Ğ±½œ€´µ½¹•±¥¹”…¹½¹™¥É´å½ÕÈÑİ¼ÑÉ½Õ‰±•Í¡½½Ñ¥¹œ½µµ¥ÑÌ…ÁÁ•…È¸œ°(ÄĞè=Á•¸Ñ¡”¡•­±¥ÍĞ½¸µ…¥¸…¹ÑÉ½Õ‰±•Í¡½½Ñ¥¹œ¸Q¡”…‘‘¥Ñ¥½¹…°Ñİ¼±¥¹•ÌÍ¡½Õ±…ÁÁ•…È½¹±ä½¸ÑÉ½Õ‰±•Í¡½½Ñ¥¹œ‰•™½É”Ñ¡”µ•É”¸œ°(ÄÔèIÕ¸¥Ğ‰É…¹ …¹¥Ğ±½œ€´µ½¹•±¥¹”¸½¹™¥É´•… ‰É…¹ ½¹Ñ…¥¹Ì¥ÑÌ½İ¸É••¹Ğİ½É¬¸œ°(ÄØèIÕ¸¥Ğ±½œ€´µÉ…Á €´µ½¹•±¥¹”€´µ…±°…¹½¹™¥É´Ñ¡”½ÕÑÁÕĞÍ¡½İÌÑ¡”‰É…¹¡•Ì‘¥Ù•É¥¹œ¸œ°(ÄÜè=Á•¸¹•Ñİ½É¬µ¡•­±¥ÍĞ¹ÑáĞ½¸ƒ[h‘éì¶»§q«^uain and confirm the troubleshooting additions are present.',
 18:'Run git status and confirm Git identifies the unresolved path as a conflict.',
 19:'Run git status and confirm the merge is complete with a clean working tree. Run git log --graph --oneline --all and confirm alternate-link-check remains visible with the resolved merge history.',
 20:'Run git log --graph --oneline --all and save the output as Firstname_Lastname_M3_log.txt. Confirm that the graph shows the alternate-link-check branch, its divergence from main, and the completed merge.'}
@@ -140,29 +59,10 @@ for idx,lab in enumerate(labs):
     for name,lines in sections:
         raw='\n'.join(lines).strip()
         if name.lower()=='goal': goal=md_html(raw)
-        elif name.lower() in ('what to notice','what just happened?','what just happened'):
-            notice += md_html(raw)
-        elif name.lower()=='check your work': check += md_html(raw)
-        else:
-            if raw: other.append((name,raw))
-        
-        for block in re.findall(r'```[^\n]*\n(.*?)```',raw,re.S):
-            if re.search(r'(?m)^\s*(?:git|mkdir|cd)\b', block): all_commands.append(block)
-    if not notice: notice=f'<p>{notice_fallback[n]}</p>'
-    if not check: check=f'<p>{check_fallback[n]}</p>'
-    instructions_parts=[]
-    for name,raw in other:
-        # Suppress the source's duplicate named checkpoint headings from being presented as top-level pages.
-        instructions_parts.append((f'<h3>{inline(name)}</h3>' if name!='text' else '')+md_html(raw))
-    instructions='\n'.join(instructions_parts) or '<p>Follow the steps in order and check the repository state as you work.</p>'
-    commands=''.join(f'<div class="command-item"><pre><code>{html.escape(c.strip())}</code></pre><button class="copy-button" type="button">Copy</button></div>' for c in all_commands)
-    if not commands: commands='<p>Use the commands shown in the instructions in the order presented.</p>'
-    prev_url='../index.html' if n==1 else f'lab-{n-1:02d}.html'
-    next_url='../index.html' if n==20 else f'lab-{n+1:02d}.html'
-    prev_label='Course home' if n==1 else f'Lab {n-1}: {labs[n-2]["title"]}'
-    next_label='Course home' if n==20 else f'Lab {n+1}: {labs[n]["title"]}'
-    part='Part 1 Â· Git fundamentals' if n<=10 else 'Part 2 Â· Branching and merging'
-    if n <= 2:
+        elif name.lower() in ('what to notice','what just happened?YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Ôœ°İ¡…Ğ©ÕÍĞ¡…ÁÁ•¹•œ¤è(€€€€€€€€€€€¹½Ñ¥”€¬ôµ‘}¡Ñµ°¡É…Ü¤(€€€€€€€•±¥˜¹…µ”¹±½İ•È ¤ôô¡•¬å½ÕÈİ½É¬œè¡•¬€¬ôµ‘}¡Ñµ°¡É…Ü¤(€€€€€€€•±Í”è(€€€€€€€€€€€¥˜É…Üè½Ñ¡•È¹…ÁÁ•¹ ¡¹…µ”±É…Ü¤¤(€€€€€€€€(€€€€€€€™½È‰±½¬¥¸É”¹™¥¹‘…±°¡Èmyq¹t©q¸ ¸¨ü¥€œ±É…Ü±É”¹L¤è(€€€€€€€€€€€¥˜É”¹Í•…É ¡Èœ ı´¥yqÌ¨ üé¥Ññµ­‘¥Éñ¥qˆœ°‰±½¬¤è…±±}½µµ…¹‘Ì¹…ÁÁ•¹¡‰±½¬¤(€€€¥˜¸€„ô€ÈÀ…¹¹½Ğ¹½Ñ¥”è¹½Ñ¥”õ˜œñÀùí¹½Ñ¥•}™…±±‰…­m¹uôğ½Àøœ(€€€¥˜¸€„ô€ÈÀ…¹¹½Ğ¡•¬è¡•¬õ˜œñÀùí¡•­}™…±±‰…­m¹uôğ½Àøœ(€€€¥¹ÍÑÉÕÑ¥½¹Í}Á…ÉÑÌõmt(€€€™½È¹…µ”±É…Ü¥¸½Ñ¡•Èè(€€€€€€€€ŒMÕÁÁÉ•ÍÌÑ¡”Í½ÕÉ”Ì‘ÕÁ±¥…Ñ”¹…µ•¡•­Á½¥¹Ğ¡•…‘¥¹Ì™É½´‰•¥¹œÁÉ•Í•¹Ñ•…ÌÑ½Àµ±•Ù•°Á…•Ì¸(€€€€€€€¥¹ÍÑÉÕÑ¥½¹Í}Á…ÉÑÌ¹…ÁÁ•¹ ¡˜œñ Ìùí¥¹±¥¹”¡¹…µ”¥ôğ½ Ìøœ¥˜¹…µ”„ôÑ•áĞœ…¹¹…µ”¹±½İ•È ¤„ô¥¹ÍÑÉÕÑ¥½¹Ìœ•±Í”€œœ¤­µ‘}¡Ñµ°¡É…Ü¤¤(€€€¥¹ÍÑÉÕÑ¥½¹Ìôq¸œ¹©½¥¸¡¥¹ÍÑÉÕÑ¥½¹Í}Á…ÉÑÌ¤½È€œñÀù½±±½ÜÑ¡”ÍÑ•ÁÌ¥¸½É‘•È…¹¡•¬Ñ¡”É•Á½Í¥Ñ½ÉäÍÑ…Ñ”…Ìå½Ôİ½É¬¸ğ½Àøœ(€€€½µµ…¹‘Ìôœœ¹©½¥¸¡˜œñ‘¥Ø±…ÍÌô‰½µµ…¹µ¥Ñ•´ˆøñÁÉ”øñ½‘”ùí¡Ñµ°¹•Í…Á”¡Œ¹ÍÑÉ¥À ¤¥ôğ½½‘”øğ½ÁÉ”øñ‰ÕÑÑ½¸±…ÍÌô‰½Áäµ‰ÕÑÑ½¸ˆÑåÁ”ô‰‰ÕÑÑ½¸ˆù½Áäğ½‰ÕÑÑ½¸øğ½‘¥Øøœ™½ÈŒ¥¸…±±}½µµ…¹‘Ì¤(€€€¥˜¹½Ğ½µµ…¹‘Ìè½µµ…¹‘ÌôœñÀùUÍ”Ñ¡”½µµ…¹‘ÌÍ¡½İ¸¥¸Ñ¡”¥¹ÍÑÉÕÑ¥½¹Ì¥¸Ñ¡”½É‘•ÈÁÉ•Í•¹Ñ•¸ğ½Àøœ(€€€ÁÉ•Ù}ÕÉ°ôœ¸¸½¥¹‘•à¹¡Ñµ°œ¥˜¸ôôÄ•±Í”˜±…ˆµí¸´ÄèÀÉ‘ô¹¡Ñµ°œ(€€€¹•áÑ}ÕÉ°ôœ¸¸½¥¹‘•à¹¡Ñµ°œ¥˜¸ôôÈÀ•±Í”˜±…ˆµí¸¬ÄèÀÉ‘ô¹¡Ñµ°œ(€€€ÁÉ•Ù}±…‰•°ô½ÕÉÍ”¡½µ”œ¥˜¸ôôÄ•±Í”˜1…ˆí¸´Åôèí±…‰Ím¸´Éul‰Ñ¥Ñ±”‰uôœ(€€€¹•áÑ}±…‰•°ô½ÕÉÍ”¡½µ”œ¥˜¸ôôÈÀ•±Í”˜1…ˆí¸¬Åôèí±…‰Ím¹ul‰Ñ¥Ñ±”‰uôœ(€€€Á…ÉĞôA…ÉĞ€Ç[h‘éì¶»§q«^tÂ· Git fundamentals' if n<=10 else 'Part 2 Â· Branching and merging'
+    if n == 20:
+        recovery=''
+    elif n <= 2:
         message='There is no repository in this lab. Restart the setup steps if needed.' if n==1 else 'There is no repository checkpoint yet. Restart Lab 2 by creating a new practice folder.'
         recovery=f'<section class="recovery"><div class="recovery-icon" aria-hidden="true">â†»</div><div><h2>Repository broken?</h2><p>{message}</p></div></section>'
     else:
@@ -171,20 +71,19 @@ for idx,lab in enumerate(labs):
         recovery=f'<section class="recovery"><div class="recovery-icon" aria-hidden="true">â†»</div><div><h2>Repository broken?</h2><p>{html.escape(cpnote)}</p></div><a class="button secondary" href="../checkpoints/{cp}.zip" download>Download Lab {n} checkpoint</a></section>'
     page=f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="CIS-1160 Git tutorial, Lab {n}: {html.escape(title)}"><title>Lab {n}: {html.escape(title)} | CIS-1160 Git</title><link rel="stylesheet" href="../assets/site.css"></head>
-<body><a class="skip-link" href="#main">Skip to lesson</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark">G</span><span>CIS-1160 <b>Git Practice</b></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Labs <span aria-hidden="true">â˜°</span></button><nav id="site-nav" class="site-nav"><a href="../index.html">Overview</a><a href="../index.html#part-1">Fundamentals</a><a href="../index.html#part-2">Branching &amp; merging</a></nav></header>
-<div class="layout"><aside class="sidebar"><div class="side-label">Tutorial map</div><a class="part-link" href="../index.html#part-1">Part 1 Â· Fundamentals</a>{''.join(f'<a class="lab-link {"active" if x["num"]==n else ""}" href="lab-{x["num"]:02d}.html"><span>{x["num"]:02d}</span>{html.escape(x["title"])}</a>' for x in labs[:10])}<a class="part-link" href="../index.html#part-2">Part 2 Â· Branching &amp; merging</a>{''.join(f'<a class="lab-link {"active" if x["num"]==n else ""}" href="lab-{x["num"]:02d}.html"><span>{x["num"]:02d}</span>{html.escape(x["title"])}</a>' for x in labs[10:])}</aside>
-<main id="main" class="lesson"><div class="crumb"><a href="../index.html">CIS-1160 Git Practice</a><span>/</span><span>Lab {n:02d}</span></div><div class="lesson-kicker">{part}</div><h1>Lab {n}: {html.escape(title)}</h1><div class="lesson-progress"><span>Lab {n} of 20</span><div class="progress-track"><span style="width:{n*5}%"></span></div></div>
-{section_html('Goal',goal,'goal-section')}
-{section_html('Instructions',instructions)}
-{section_html('Commands',f'<p class="section-intro">Use these commands as you work through the instructions. Run them in Git Bash.</p>{commands}')}
-{section_html('What to Notice',notice,'notice-section')}
-{section_html('Check Your Work',check,'check-section')}
+<body><a class="skip-link" href="#main">Skip to lesson</a><header class="site-header"><a class="YªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬Õ‰É…¹ˆ¡É•˜ôˆ¸¸½¥¹‘•à¹¡Ñµ°ˆøñÍÁ…¸±…ÍÌô‰‰É…¹µµ…É¬ˆùğ½ÍÁ…¸øñÍÁ…¸ù%L´ÄÄØÀ€ñˆù¥ĞAÉ…Ñ¥”ğ½ˆøğ½ÍÁ…¸øğ½„øñ‰ÕÑÑ½¸±…ÍÌô‰µ•¹ÔµÑ½±”ˆ…É¥„µ•áÁ…¹‘•ô‰™…±Í”ˆ…É¥„µ½¹ÑÉ½±Ìô‰Í¥Ñ”µ¹…Øˆù1…‰Ì€ñÍÁ…¸…É¥„µ¡¥‘‘•¸ô‰ÑÉÕ”ˆûŠbÀğ½ÍÁ…¸øğ½‰ÕÑÑ½¸øñ¹…Ø¥ô‰Í¥Ñ”µ¹…Øˆ±…ÍÌô‰Í¥Ñ”µ¹…Øˆøñ„¡É•˜ôˆ¸¸½¥¹‘•à¹¡Ñµ°ˆù=Ù•ÉÙ¥•Üğ½„øñ„¡É•˜ôˆ¸¸½¥¹‘•à¹¡Ñµ°Á…ÉĞ´ÄˆùÕ¹‘…µ•¹Ñ…±Ìğ½„øñ„¡É•˜ôˆ¸¸½¥¹‘•à¹¡Ñµ°Á…ÉĞ´Èˆù	É…¹¡¥¹œ€™…µÀìµ•É¥¹œğ½„øğ½¹…Øøğ½¡•…‘•Èø(ñ‘¥Ø±…ÍÌô‰±…å½ÕĞˆøñ…Í¥‘”±…ÍÌô‰Í¥‘•‰…Èˆøñ‘¥Ø±…ÍÌô‰Í¥‘”µ±…‰•°ˆùQÕÑ½É¥…°µ…Àğ½‘¥Øøñ„±…ÍÌô‰Á…ÉĞµ±¥¹¬ˆ¡É•˜ôˆ¸¸½¥¹‘•à¹¡Ñµ°Á…ÉĞ´ÄˆùA…ÉĞ€Äƒ
+ÜÕ¹‘…µ•¹Ñ…±Ìğ½„ùìœœ¹©½¥¸¡˜œñ„±…ÍÌô‰±…ˆµ±¥¹¬ì‰…Ñ¥Ù”ˆ¥˜ál‰¹Õ´‰tôõ¸•±Í”€ˆ‰ôˆ¡É•˜ô‰±…ˆµíál‰¹Õ´‰tèÀÉ‘ô¹¡Ñµ°ˆøñÍÁ…¸ùíál‰¹Õ´‰tèÀÉ‘ôğ½ÍÁ…¸ùí¡Ñµ°¹•Í…Á”¡ál‰Ñ¥Ñ±”‰t¥ôğ½„øœ™½Èà¥¸±…‰ÍlèÄÁt¥ôñ„±…ÍÌô‰Á…ÉĞµ±¥¹¬ˆ¡É•˜ôˆ¸¸½¥¹‘•à¹¡Ñµ°Á…ÉĞ´ÈˆùA…ÉĞ€Èƒ
+Ü	É…¹¡¥¹œ€™…µÀìµ•É¥¹œğ½„ùìœœ¹©½¥¸¡˜œñ„±…ÍÌô‰±…ˆµ±¥¹¬ì‰…Ñ¥Ù”ˆ¥˜ál‰¹Õ´‰tôõ¸•±Í”€ˆ‰ôˆ¡É•˜ô‰±…ˆµíál‰¹Õ´‰tèÀÉ‘ô¹¡Ñµ°ˆøñÍÁ…¸ùíál‰¹Õ´‰tèÀÉ‘ôğ½ÍÁ…¸ùí¡Ñµ°¹•Í…Á”¡ál‰Ñ¥Ñ±”‰t¥ôğ½„øœ™½Èà¥¸±…‰ÍlÄÀét¥ôğ½…Í¥‘”ø(ñµ…¥¸¥ô‰µ…¥¸ˆ±…ÍÌô‰±•ÍÍ½¸ˆøñ‘¥Ø±…ÍÌô‰ÉÕµˆˆøñ„¡É•˜ôˆ¸¸½¥¹‘•à¹¡Ñµ°ˆù%L´ÄÄØÀ¥ĞAÉ…Ñ¥”ğ½„øñÍÁ…¸ø¼ğ½ÍÁ…¸øñÍÁ…¸ù1…ˆí¸èÀÉ‘ôğ½ÍÁ…¸øğ½‘¥Øøñ‘¥Ø±…ÍÌô‰±•ÍÍ½¸µ­¥­•ÈˆùíÁ…ÉÑôğ½‘¥Øøñ Äù1…ˆí¹ôèí¡Ñµ°¹•Í…Á”¡Ñ¥Ñ±”¥ôğ½ Äøñ‘¥Ø±…ÍÌô‰±•ÍÍ½¸µÁÉ½É•ÍÌˆøñÍÁ…¸ù1…ˆí¹ô½˜€ÈÀğ½ÍÁ…¸øñ‘¥Ø±…ÍÌô‰ÁÉ½É•ÍÌµÑÉ…¬ˆøñÍÁ…¸ÍÑå±”ô‰İ¥‘Ñ éí¸¨Õô”ˆøğ½ÍÁ…¸øğ½‘¥Øøğ½‘¥Øø)íÍ•Ñ¥½¹}¡Ñµ° ½…°œ±½…°°½…°µÍ•Ñ¥½¸œ¥ô)íÍ•Ñ¥½¹}¡Ñµ° %¹ÍÑÉÕÑ¥½¹Ìœ±¥¹ÍÑÉÕÑ¥½¹Ì¥ô)ìœœ¥˜¸ôôÈÀ•±Í”Í•Ñ¥½¹}¡Ñµ° ½µµ‡[h‘éì¶»§q«^vds',f'<p class="section-intro">Use these commands as you work through the instructions. Run them in Git Bash.</p>{commands}')}
+{'' if n==20 else section_html('What to Notice',notice,'notice-section')}
+{'' if n==20 else section_html('Check Your Work',check,'check-section')}
 {recovery}
 <nav class="lesson-nav" aria-label="Previous and next lessons"><a href="{prev_url}" class="nav-card"><span>â† Previous</span><strong>{html.escape(prev_label)}</strong></a><a href="{next_url}" class="nav-card next"><span>Next â†’</span><strong>{html.escape(next_label)}</strong></a></nav><footer class="site-footer">CIS-1160 Introduction to Information Systems Â· Git fundamentals and branching</footer></main></div><script src="../assets/site.js"></script></body></html>'''
     (ROOT/'labs'/f'lab-{n:02d}.html').write_text(page,encoding='utf-8')
 
 cards=''.join(f'<a class="overview-card" href="labs/lab-{x["num"]:02d}.html"><span class="card-number">{x["num"]:02d}</span><span class="card-copy"><b>{html.escape(x["title"])}</b><small>{"Git fundamentals" if x["num"]<=10 else "Branching and merging"}</small></span><span class="card-arrow">â†—</span></a>' for x in labs)
-index=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A beginner-friendly, task-focused Git tutorial for CIS-1160."><title>CIS-1160 Git Practice Tutorial</title><link rel="stylesheet" href="assets/site.css"></head><body><a class="skip-link" href="#main">Skip to tutorial</a><header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">G</span><span>CIS-1160 <b>Git Practice</b></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu <span aria-hidden="true">â˜°</span></button><nav id="site-nav" class="site-nav"><a href="#part-1">Fundamentals</a><a href="#part-2">Branching &amp; merging</a><a href="#getting-started">Getting started</a></nav></header><main id="main"><section class="hero"><div class="hero-copy"><div class="eyebrow"><span class="eyebrow-dot"></span> CIS-1160 Â· Introduction to Information Systems</div><h1>Learn Git by working through the changes.</h1><p>Start with a local repository, make and inspect commits, then practise branches, merges, and conflict resolution using simple technical support files.</p><div class="hero-actions"><a class="button primary" href="labs/lab-01.html">Start with Lab 1 <span>â†’</span></a><a class="text-link" href="#part-1">Browse all 20 labs</a></div><div class="hero-meta"><span>20 short labs</span><span>Git Bash for Windows</span><span>No programming required</span></div></div><div class="hero-visual" aria-label="Illustration of a Git commit history branching and merging"><div class="visual-top"><span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span><span class="visual-title">support-tools Â· history</span></div><div class="branch-lines"><div class="branch-label main-label">main</div><div class="branch-label work-label">troubleshooting</div><svg viewBox="0 0 440 206" role="img" aria-label="A simple branching and merge graph"><path class="line-main" d="M45 32 V174"/><path class="line-work" d="M45 86 C45 112 90 112 90 138 V174"/><path class="line-merge" d="M90 138 C90 164 45 148 45 174"/><circle cx="45" cy="32" r="7"/><circle cx="45" cy="82" r="7"/><circle cx="90" cy="132" r="7"/><circle cx="45" cy="174" r="7"/><text x="70" y="38">Add project README</text><text x="70" y="88">Clarify link status</text><text x="116" y="138">Add connectivity checks</text><text x="70" y="180">Merge troubleshooting</text></svg></div><div class="visual-caption"><span class="status-dot"></span> A visual history helps you see where work belongs.</div></div></section>
+index=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A beginner-friendly, task-focused Git tutorial for CIS-1160."><title>CIS-1160 Git Practice Tutorial</title><link rel="stylesheet" href="assets/site.css"></head><body><a claYªçŠx-®éÜj×¢ëiºÚ+Š§j[h‘éÜ¢éí×M5N‹Z–‹­¦ëeŠw¬ÕÍÌô‰Í­¥Àµ±¥¹¬ˆ¡É•˜ôˆµ…¥¸ˆùM­¥ÀÑ¼ÑÕÑ½É¥…°ğ½„øñ¡•…‘•È±…ÍÌô‰Í¥Ñ”µ¡•…‘•Èˆøñ„±…ÍÌô‰‰É…¹ˆ¡É•˜ô‰¥¹‘•à¹¡Ñµ°ˆøñÍÁ…¸±…ÍÌô‰‰É…¹µµ…É¬ˆùğ½ÍÁ…¸øñÍÁ…¸ù%L´ÄÄØÀ€ñˆù¥ĞAÉ…Ñ¥”ğ½ˆøğ½ÍÁ…¸øğ½„øñ‰ÕÑÑ½¸±…ÍÌô‰µ•¹ÔµÑ½±”ˆ…É¥„µ•áÁ…¹‘•ô‰™…±Í”ˆ…É¥„µ½¹ÑÉ½±Ìô‰Í¥Ñ”µ¹…Øˆù5•¹Ô€ñÍÁ…¸…É¥„µ¡¥‘‘•¸ô‰ÑÉÕ”ˆûŠbÀğ½ÍÁ…¸øğ½‰ÕÑÑ½¸øñ¹…Ø¥ô‰Í¥Ñ”µ¹…Øˆ±…ÍÌô‰Í¥Ñ”µ¹…Øˆøñ„¡É•˜ôˆÁ…ÉĞ´ÄˆùÕ¹‘…µ•¹Ñ…±Ìğ½„øñ„¡É•˜ôˆÁ…ÉĞ´Èˆù	É…¹¡¥¹œ€™…µÀìµ•É¥¹œğ½„øñ„¡É•˜ôˆ•ÑÑ¥¹œµÍÑ…ÉÑ•ˆù•ÑÑ¥¹œÍÑ…ÉÑ•ğ½„øğ½¹…Øøğ½¡•…‘•Èøñµ…¥¸¥ô‰µ…¥¸ˆøñÍ•Ñ¥½¸±…ÍÌô‰¡•É¼ˆøñ‘¥Ø±…ÍÌô‰¡•É¼µ½Áäˆøñ‘¥Ø±…ÍÌô‰•å•‰É½ÜˆøñÍÁ…¸±…ÍÌô‰•å•‰É½Üµ‘½Ğˆøğ½ÍÁ…¸ø%L´ÄÄØÀƒ
+Ü%¹ÑÉ½‘ÕÑ¥½¸Ñ¼%¹™½Éµ…Ñ¥½¸MåÍÑ•µÌğ½‘¥Øøñ Äù1•…É¸¥Ğ‰äİ½É­¥¹œÑ¡É½Õ Ñ¡”¡…¹•Ì¸ğ½ ÄøñÀùMÑ…ÉĞİ¥Ñ „±½…°É•Á½Í¥Ñ½Éä°µ…­”…¹¥¹ÍÁ•Ğ½µµ¥ÑÌ°Ñ¡•¸ÁÉ…Ñ¥Í”‰É…¹¡•Ì°µ•É•Ì°…¹½¹™±¥ĞÉ•Í½±ÕÑ¥½¸ÕÍ¥¹œÍ¥µÁ±”Ñ•¡¹¥…°ÍÕÁÁ½ÉĞ™¥±•Ì¸ğ½Àøñ‘¥Ø±…ÍÌô‰¡•É¼µ…Ñ¥½¹Ìˆøñ„±…ÍÌô‰‰ÕÑÑ½¸ÁÉ¥µ…Éäˆ¡É•˜ô‰±…‰Ì½±…ˆ´ÀÄ¹¡Ñµ°ˆùMÑ…ÉĞİ¥Ñ 1…ˆ€Ä€ñÍÁ…¸ûŠHğ½ÍÁ…¸øğ½„øñ„±…ÍÌô‰Ñ•áĞµ±¥¹¬ˆ¡É•˜ôˆÁ…ÉĞ´Äˆù	É½İÍ”…±°€ÈÀ±…‰Ìğ½„øğ½‘¥Øøñ‘¥Ø±…ÍÌô‰¡•É¼µµ•Ñ„ˆøñÍÁ…¸øÈÀÍ¡½ÉĞ±…‰Ìğ½ÍÁ…¸øñÍÁ…¸ù¥Ğ	…Í ™½È]¥¹‘½İÌğ½ÍÁ…¸øñÍÁ…¸ù9¼ÁÉ½É…µµ¥¹œÉ•ÅÕ¥É•ğ½ÍÁ…¸øğ½‘¥Øøğ½‘¥Øøñ‘¥Ø±…ÍÌô‰¡•É¼µÙ¥ÍÕ…°ˆ…É¥„µ±…‰•°ô‰%±±ÕÍÑÉ…Ñ¥½¸½˜„¥Ğ½µµ¥Ğ¡¥ÍÑ½Éä‰É…¹¡¥¹œ…¹µ•É¥¹œˆøñ‘¥Ø±…ÍÌô‰Ù¥ÍÕ…°µÑ½ÀˆøñÍÁ…¸±…ÍÌô‰İ¥¹‘½Üµ‘½Ğˆøğ½ÍÁ…¸øñÍÁ…¸±…ÍÌô‰İ¥¹‘½Üµ‘½Ğˆøğ½ÍÁ…¸øñÍÁ…¸±…ÍÌô‰İ¥¹‘½Üµ‘½Ğˆøğ½ÍÁ…¸øñÍÁ…¸±…ÍÌô‰Ù¥ÍÕ…°µÑ¥Ñ±”ˆùÍÕÁÁ½ÉĞµÑ½½±Ìƒ
+Ü¡¥ÍÑ½Éäğ½ÍÁ…¸øğ½‘¥Øøñ‘¥Ø±…ÍÌô‰‰É…¹ µ±¥¹•Ìˆøñ‘¥Ø±…ÍÌô‰‰É…¹ µ±‡[h‘éì¶»§q«^vel main-label">main</div><div class="branch-label work-label">troubleshooting</div><svg viewBox="0 0 440 206" role="img" aria-label="A simple branching and merge graph"><path class="line-main" d="M45 32 V174"/><path class="line-work" d="M45 86 C45 112 90 112 90 138 V174"/><path class="line-merge" d="M90 138 C90 164 45 148 45 174"/><circle cx="45" cy="32" r="7"/><circle cx="45" cy="82" r="7"/><circle cx="90" cy="132" r="7"/><circle cx="45" cy="174" r="7"/><text x="70" y="38">Add project README</text><text x="70" y="88">Clarify link status</text><text x="116" y="138">Add connectivity checks</text><text x="70" y="180">Merge troubleshooting</text></svg></div><div class="visual-caption"><span class="status-dot"></span> A visual history helps you see where work belongs.</div></div></section>
 <section id="getting-started" class="start-strip"><div><span class="section-eyebrow">Before you begin</span><h2>Get Git ready in a few minutes.</h2><p>Install Git for Windows, open Git Bash, and complete Lab 1 to verify your setup and identify your commits.</p></div><a href="labs/lab-01.html" class="button secondary">Open setup instructions <span>â†’</span></a></section>
 <section id="part-1" class="lab-group"><div class="group-heading"><div><div class="section-eyebrow">Part 1 Â· Labs 01â€“10</div><h2>Git fundamentals</h2><p>Create a repository, track changes, stage files, commit work, and inspect history.</p></div><a href="labs/lab-01.html" class="group-link">Begin Part 1 â†’</a></div><div class="lab-grid">{''.join(cards.split('</a>')[:10])}</div></section>
 <section id="part-2" class="lab-group part-two"><div class="group-heading"><div><div class="section-eyebrow">Part 2 Â· Labs 11â€“20</div><h2>Branching and merging</h2><p>Build a second line of work, bring changes together, and resolve a conflict.</p></div><a href="labs/lab-11.html" class="group-link">Begin Part 2 â†’</a></div><div class="lab-grid">{''.join('</a>'.join(cards.split('</a>')[10:]))}</div></section>
