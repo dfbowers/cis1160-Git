@@ -39,7 +39,7 @@ def inline(s):
     s=re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', s)
     return s
 
-def md_html(md):
+def md_html(md, omit_heading=None):
     lines=md.splitlines(); out=[]; para=[]; in_code=False; code=[]; in_ul=False; in_ol=False; in_quote=False
     def flush_para():
         nonlocal para
@@ -62,7 +62,10 @@ def md_html(md):
         if not line.strip(): flush_para(); close_lists(); close_quote(); continue
         hm=re.match(r'^(#{1,6})\s+(.+)$',line)
         if hm:
-            flush_para(); close_lists(); close_quote(); level=len(hm.group(1)); out.append(f'<h{level}>{inline(hm.group(2))}</h{level}>'); continue
+            flush_para(); close_lists(); close_quote(); level=len(hm.group(1))
+            if omit_heading and hm.group(2).strip().casefold()==omit_heading.casefold():
+                continue
+            out.append(f'<h{level}>{inline(hm.group(2))}</h{level}>'); continue
         if line.strip()=='---': flush_para(); close_lists(); close_quote(); out.append('<hr>'); continue
         if re.match(r'^\s*[-*]\s+',line):
             flush_para(); close_quote()
@@ -146,14 +149,17 @@ for idx,lab in enumerate(labs):
         else:
             if raw: other.append((name,raw))
         
-        for block in re.findall(r'```[^\n]*\n(.*?)```',raw,re.S):
-            if re.search(r'(?m)^\s*(?:git|mkdir|cd)\b', block): all_commands.append(block)
+        for language,block in re.findall(r'```([^\n]*)\n(.*?)```',raw,re.S):
+            # Copy controls belong only to executable shell blocks. File examples,
+            # expected output, diagrams, and prose use text/markdown fences.
+            if language.strip().casefold() in ('bash','sh') and re.search(r'(?m)^\s*(?:git|mkdir|cd)\b', block):
+                all_commands.append(block)
     if n != 20 and not notice: notice=f'<p>{notice_fallback[n]}</p>'
     if n != 20 and not check: check=f'<p>{check_fallback[n]}</p>'
     instructions_parts=[]
     for name,raw in other:
         # Suppress the source's duplicate named checkpoint headings from being presented as top-level pages.
-        instructions_parts.append((f'<h3>{inline(name)}</h3>' if name!='text' and name.lower()!='instructions' else '')+md_html(raw))
+        instructions_parts.append((f'<h3>{inline(name)}</h3>' if name!='text' and name.lower()!='instructions' else '')+md_html(raw, omit_heading=name if name.lower()=='instructions' else None))
     instructions='\n'.join(instructions_parts) or '<p>Follow the steps in order and check the repository state as you work.</p>'
     commands=''.join(f'<div class="command-item"><pre><code>{html.escape(c.strip())}</code></pre><button class="copy-button" type="button">Copy</button></div>' for c in all_commands)
     if not commands: commands='<p>Use the commands shown in the instructions in the order presented.</p>'

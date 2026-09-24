@@ -278,11 +278,9 @@ The status should say you are on branch `main` and that there are no commits yet
 
 See how Git reacts when a new file appears in the working directory.
 
-Create:
+In the `support-tools` folder, create a new text file named `network-checklist.txt`.
 
-```text
-network-checklist.txt
-```
+Make sure the file is named `network-checklist.txt`, not `network-checklist.txt.txt`.
 
 Add the following content:
 
@@ -430,6 +428,10 @@ At this point the change is in the working directory but has not been staged.
 
 # Lab 7: Stage and Commit the Change
 
+## Goal
+
+Stage and commit a change to an existing tracked file.
+
 Stage the modified file:
 
 ```bash
@@ -541,11 +543,9 @@ git commit -m "Expand troubleshooting checklist"
 
 Practise adding another file to an existing repository.
 
-Create:
+In the `support-tools` folder, create a new file named `README.md`.
 
-```text
-README.md
-```
+Make sure the file is named `README.md`, not `README.md.txt`.
 
 Add:
 
