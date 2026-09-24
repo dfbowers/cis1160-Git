@@ -11,14 +11,20 @@ labs = []
 for i in range(1, len(chunks), 3):
     num = int(chunks[i]); title = chunks[i+1].strip(); body = chunks[i+2]
     if num > 20: continue
+    if num == 20:
+        body = re.split(r'(?m)^# 7\. Checkpoint Repository Design\s*$', body, maxsplit=1)[0]
     labs.append({'num':num, 'title':title, 'body':body.strip()})
 
 assert len(labs) == 20, f'Expected 20 labs, got {len(labs)}'
 
 def split_sections(md):
-    lines=md.splitlines(); out=[]; current=('text',[])
+    lines=md.splitlines(); out=[]; current=('text',[]); in_fence=False
     for line in lines:
-        m=re.match(r'^## (.+)$', line)
+        if line.strip().startswith('```'):
+            in_fence=not in_fence
+            current[1].append(line)
+            continue
+        m=re.match(r'^## (.+)$', line) if not in_fence else None
         if m:
             out.append(current); current=(m.group(1).strip(),[])
         else: current[1].append(line)
@@ -119,11 +125,11 @@ check_fallback = {
 16:'Run git log --graph --oneline --all and confirm the output shows the branches diverging.',
 17:'Open network-checklist.txt on main and confirm the troubleshooting additions are present.',
 18:'Run git status and confirm Git identifies the unresolved path as a conflict.',
-19:'Run git status and confirm the merge is complete with a clean working tree. Review the graph for the merge history.',
-20:'Run git log --graph --oneline --all and save the output as Firstname_Lastname_M3_log.txt.'}
+19:'Run git status and confirm the merge is complete with a clean working tree. Run git log --graph --oneline --all and confirm alternate-link-check remains visible with the resolved merge history.',
+20:'Run git log --graph --oneline --all and save the output as Firstname_Lastname_M3_log.txt. Confirm that the graph shows the alternate-link-check branch, its divergence from main, and the completed merge.'}
 
 # Explain the prepared conflict checkpoint clearly; all other recovery links are direct downloads.
-checkpoint_notes={18:'This starting checkpoint contains the merged repository with main selected. It also keeps conflict-start at the commit before the link-check change, ready for the alternate branch.',19:'This checkpoint contains the unresolved conflict produced in Lab 18. Open network-checklist.txt, remove the conflict markers, and complete the merge.'}
+checkpoint_notes={18:'This checkpoint starts with the clean, merged main branch at the end of Lab 17. Follow Lab 18 to create the alternate branch and make the two competing changes.',19:'This checkpoint contains the unresolved conflict produced by the normal Lab 18 sequence. Open network-checklist.txt, remove the conflict markers, and complete the merge.'}
 
 def section_html(title, content, cls=''):
     return f'<section class="lesson-section {cls}"><h2>{title}</h2>{content}</section>'

@@ -8,21 +8,22 @@
 <p>In Git Bash:</p>
 <pre><code>mkdir support-tools
 cd support-tools</code></pre>
-<p>Initialize Git:</p>
-<pre><code>git init</code></pre>
+<p>Initialize Git and standardize the branch name:</p>
+<pre><code>git init
+git branch -M main</code></pre>
 <p>Check the repository:</p>
-<pre><code>git status</code></pre></section>
+<pre><code>git status
+git branch</code></pre></section>
 <section class="lesson-section "><h2>Commands</h2><p class="section-intro">Use these commands as you work through the instructions. Run them in Git Bash.</p><div class="command-item"><pre><code>mkdir support-tools
-cd support-tools</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git init</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git status</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git branch -M main</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git status</code></pre><button class="copy-button" type="button">Copy</button></div></section>
+cd support-tools</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git init
+git branch -M main</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git status
+git branch</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git status</code></pre><button class="copy-button" type="button">Copy</button></div></section>
 <section class="lesson-section notice-section"><h2>What to Notice</h2><p><code>git init</code> created a Git repository inside the <code>support-tools</code> folder.</p>
 <p>Git created a hidden <code>.git</code> directory that stores repository information and history.</p>
-<p>Do not manually edit files inside <code>.git</code>.</p><p><code>git status</code> should report that you are on a branch and that there are no commits yet.</p>
-<p>The default branch may be named <code>main</code> or <code>master</code> depending on the Git configuration.</p>
-<p>For the web tutorial, standardize the exercises on <code>main</code>.</p>
-<p>If necessary:</p>
-<pre><code>git branch -M main</code></pre></section>
-<section class="lesson-section check-section"><h2>Check Your Work</h2><pre><code>git status</code></pre>
-<p>should run without an error.</p>
+<p>Do not manually edit files inside <code>.git</code>.</p><p>The repository has no commits yet. <code>git status</code> confirms that its branch name is <code>main</code>. Renaming it here means everyone uses the same branch name in the later activities.</p></section>
+<section class="lesson-section check-section"><h2>Check Your Work</h2><p>Run:</p>
+<pre><code>git status</code></pre>
+<p>The status should say you are on branch <code>main</code> and that there are no commits yet.</p>
 <hr></section>
 <section class="recovery"><div class="recovery-icon" aria-hidden="true">↻</div><div><h2>Repository broken?</h2><p>There is no repository checkpoint yet. Restart Lab 2 by creating a new practice folder.</p></div></section>
 <nav class="lesson-nav" aria-label="Previous and next lessons"><a href="lab-01.html" class="nav-card"><span>← Previous</span><strong>Lab 1: Git Setup</strong></a><a href="lab-03.html" class="nav-card next"><span>Next →</span><strong>Lab 3: Create a Project File</strong></a></nav><footer class="site-footer">CIS-1160 Introduction to Information Systems · Git fundamentals and branching</footer></main></div><script src="../assets/site.js"></script></body></html>

@@ -46,7 +46,9 @@ Remove conflict markers
       ↓
 git add
       ↓
-git commit</code></pre><button class="copy-button" type="button">Copy</button></div></section>
+git commit</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git status
+git branch
+git log --graph --oneline --all</code></pre><button class="copy-button" type="button">Copy</button></div></section>
 <section class="lesson-section notice-section"><h2>What to Notice</h2><p>A conflict did not mean the repository was broken.</p>
 <p>Git stopped because it needed a human decision.</p>
 <p>The basic conflict-resolution process is:</p>
@@ -58,8 +60,12 @@ Remove conflict markers
       ↓
 git add
       ↓
-git commit</code></pre>
+git commit</code></pre></section>
+<section class="lesson-section check-section"><h2>Check Your Work</h2><p>Run:</p>
+<pre><code>git status
+git branch
+git log --graph --oneline --all</code></pre>
+<p>The working tree should be clean. <code>git branch</code> should still list <code>alternate-link-check</code>, and the graph should show the separate branch work and the completed merge.</p>
 <hr></section>
-<section class="lesson-section check-section"><h2>Check Your Work</h2><p>Run git status and confirm the merge is complete with a clean working tree. Review the graph for the merge history.</p></section>
-<section class="recovery"><div class="recovery-icon" aria-hidden="true">↻</div><div><h2>Repository broken?</h2><p>This checkpoint contains the unresolved conflict produced in Lab 18. Open network-checklist.txt, remove the conflict markers, and complete the merge. Extract the ZIP, then use Git Bash in the extracted support-tools folder.</p></div><a class="button secondary" href="../checkpoints/lab-19-start.zip" download>Download Lab 19 checkpoint</a></section>
+<section class="recovery"><div class="recovery-icon" aria-hidden="true">↻</div><div><h2>Repository broken?</h2><p>This checkpoint contains the unresolved conflict produced by the normal Lab 18 sequence. Open network-checklist.txt, remove the conflict markers, and complete the merge. Extract the ZIP, then use Git Bash in the extracted support-tools folder.</p></div><a class="button secondary" href="../checkpoints/lab-19-start.zip" download>Download Lab 19 checkpoint</a></section>
 <nav class="lesson-nav" aria-label="Previous and next lessons"><a href="lab-18.html" class="nav-card"><span>← Previous</span><strong>Lab 18: Create a Merge Conflict</strong></a><a href="lab-20.html" class="nav-card next"><span>Next →</span><strong>Lab 20: M3 Checkpoint</strong></a></nav><footer class="site-footer">CIS-1160 Introduction to Information Systems · Git fundamentals and branching</footer></main></div><script src="../assets/site.js"></script></body></html>

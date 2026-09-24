@@ -234,16 +234,18 @@ mkdir support-tools
 cd support-tools
 ```
 
-Initialize Git:
+Initialize Git and standardize the branch name:
 
 ```bash
 git init
+git branch -M main
 ```
 
 Check the repository:
 
 ```bash
 git status
+git branch
 ```
 
 ## What Just Happened?
@@ -256,25 +258,17 @@ Do not manually edit files inside `.git`.
 
 ## What to Notice
 
-`git status` should report that you are on a branch and that there are no commits yet.
-
-The default branch may be named `main` or `master` depending on the Git configuration.
-
-For the web tutorial, standardize the exercises on `main`.
-
-If necessary:
-
-```bash
-git branch -M main
-```
+The repository has no commits yet. `git status` confirms that its branch name is `main`. Renaming it here means everyone uses the same branch name in the later activities.
 
 ## Check Your Work
+
+Run:
 
 ```bash
 git status
 ```
 
-should run without an error.
+The status should say you are on branch `main` and that there are no commits yet.
 
 ---
 
@@ -612,13 +606,13 @@ The exact commit identifiers will differ between students.
 
 ## M2 Evidence
 
-Create:
+Save the evidence one folder above `support-tools` so the evidence file does not appear as an untracked project file. From inside the repository, run:
 
 ```bash
-git log --oneline > Firstname_Lastname_M2_log.txt
+git log --oneline > ../Firstname_Lastname_M2_log.txt
 ```
 
-Students may submit the resulting text file or a screenshot showing equivalent evidence.
+The evidence file will be in the folder that contains `support-tools`. Students may submit the resulting text file or a screenshot showing equivalent evidence.
 
 The log should show several commits created during the fundamentals activities.
 
@@ -832,13 +826,19 @@ git switch main
 
 ## Goal
 
-Create different commits on two branches.
+Create a different change on `main` so that `main` and `troubleshooting` contain independent work.
 
-You should currently be on `main`.
+## Instructions
 
-Open `README.md`.
+You should currently be on `main`. Verify the current branch:
 
-Add:
+```bash
+git branch
+```
+
+The `*` should be beside `main`.
+
+Open `README.md` and add:
 
 ```markdown
 ## Purpose
@@ -846,19 +846,38 @@ Add:
 These files support a repeatable network troubleshooting process.
 ```
 
-Save and commit:
+Save the file. Check that Git sees the change:
+
+```bash
+git status
+```
+
+Stage and commit the README change:
 
 ```bash
 git add README.md
 git commit -m "Document repository purpose"
 ```
 
-Now the branches contain different work:
+## What to Notice
 
-- `main` contains the README change
-- `troubleshooting` contains additional checklist changes
+The branches now contain different commits:
 
----
+- `main` contains the README change.
+- `troubleshooting` contains the additional network-checklist changes.
+
+Do not merge them yet. Lab 16 will visualize the divergence first.
+
+## Check Your Work
+
+Run:
+
+```bash
+git branch
+git status
+```
+
+Confirm that `main` is current, `troubleshooting` still exists, and the working tree is clean.
 
 # Lab 16: View Branch History
 
@@ -949,84 +968,92 @@ means:
 
 ## Goal
 
-Deliberately create a situation Git cannot resolve automatically.
+Create two branches that independently modify the same line, then attempt to merge them.
 
-Merge conflicts are normal. A conflict means Git needs a human to decide what the final content should be.
+## Step 1: Confirm `main`
 
-## Step 1: Change a Line on Main
-
-Make sure you are on `main`:
+At the end of Lab 17, `troubleshooting` has been merged into `main`. Switch to `main` and check the repository:
 
 ```bash
 git switch main
+git status
 ```
 
-Open `network-checklist.txt`.
+The working tree should be clean.
 
-Change:
+## Step 2: Create the Alternate Branch
 
-```text
-2. Check link status.
-```
-
-to:
-
-```text
-2. Check the network adapter link lights.
-```
-
-Save and commit:
+Before changing `main`, create and switch to `alternate-link-check`:
 
 ```bash
-git add network-checklist.txt
-git commit -m "Clarify link status check"
-```
-
-## Step 2: Create a Conflict Branch
-
-The `conflict-start` checkpoint keeps a branch at the commit before the new `main` change. Switch to that branch, then create the alternate line of work:
-
-```bash
-git switch conflict-start
 git switch -c alternate-link-check
 ```
 
-In `network-checklist.txt`, change the same original line:
+Open `network-checklist.txt`. Find this line:
 
 ```text
 2. Check link status.
 ```
 
-to:
+Change it to:
 
 ```text
 2. Verify the Ethernet or Wi-Fi connection is active.
 ```
 
-Save and commit:
+Save the file. Stage and commit this version:
 
 ```bash
 git add network-checklist.txt
 git commit -m "Revise connection check"
 ```
 
-## Step 3: Attempt the Merge
+## Step 3: Make a Different Change on `main`
 
-Switch to `main`:
+Switch back to `main`:
 
 ```bash
 git switch main
 ```
 
-Attempt:
+Open `network-checklist.txt`. The second line should again be the original:
+
+```text
+2. Check link status.
+```
+
+Change it to:
+
+```text
+2. Check the network adapter link lights.
+```
+
+Save the file. Stage and commit this version:
+
+```bash
+git add network-checklist.txt
+git commit -m "Clarify link status check"
+```
+
+## Step 4: View the Divergence
+
+Before merging, run:
+
+```bash
+git log --graph --oneline --all
+```
+
+The `main` and `alternate-link-check` branches now contain different changes to the same original line.
+
+## Step 5: Attempt the Merge
+
+You should still be on `main`. Merge the alternate branch:
 
 ```bash
 git merge alternate-link-check
 ```
 
-Git should report a conflict.
-
-Run:
+Git should report a merge conflict in `network-checklist.txt`. Check the repository state:
 
 ```bash
 git status
@@ -1034,11 +1061,24 @@ git status
 
 ## What to Notice
 
-Git cannot safely decide which version of the same line should be used.
+- Nothing is broken.
+- Both branches independently changed the same part of the same file.
+- Git cannot safely decide which version you intend to keep.
+- Git has paused the merge for a human decision.
+- Lab 19 will resolve the conflict.
 
-That is the conflict.
+Do not resolve the conflict in this lab.
 
----
+## Check Your Work
+
+Run:
+
+```bash
+git status
+git branch
+```
+
+You should be on `main`. `git status` should report an unresolved conflict in `network-checklist.txt`, and the file should contain conflict markers. `git branch` should list `alternate-link-check`.
 
 # Lab 19: Resolve a Merge Conflict
 
@@ -1136,6 +1176,18 @@ git add
 git commit
 ```
 
+## Check Your Work
+
+Run:
+
+```bash
+git status
+git branch
+git log --graph --oneline --all
+```
+
+The working tree should be clean. `git branch` should still list `alternate-link-check`, and the graph should show the separate branch work and the completed merge.
+
 ---
 
 # Lab 20: M3 Checkpoint
@@ -1144,13 +1196,25 @@ git commit
 
 Demonstrate the branching and merging work completed in Part 2.
 
-Run:
+## Instructions
+
+### Review the graph
+
+Confirm that the current branch is `main` and that `alternate-link-check` is still listed:
+
+```bash
+git branch
+```
+
+Then run:
 
 ```bash
 git log --graph --oneline --all
 ```
 
-Review the graph before creating your evidence.
+Inspect the separate history paths and merge before creating your evidence.
+
+### Create M3 evidence
 
 Create:
 

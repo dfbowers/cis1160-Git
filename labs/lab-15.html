@@ -3,25 +3,31 @@
 <body><a class="skip-link" href="#main">Skip to lesson</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark">G</span><span>CIS-1160 <b>Git Practice</b></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Labs <span aria-hidden="true">☰</span></button><nav id="site-nav" class="site-nav"><a href="../index.html">Overview</a><a href="../index.html#part-1">Fundamentals</a><a href="../index.html#part-2">Branching &amp; merging</a></nav></header>
 <div class="layout"><aside class="sidebar"><div class="side-label">Tutorial map</div><a class="part-link" href="../index.html#part-1">Part 1 · Fundamentals</a><a class="lab-link " href="lab-01.html"><span>01</span>Git Setup</a><a class="lab-link " href="lab-02.html"><span>02</span>Create Your First Repository</a><a class="lab-link " href="lab-03.html"><span>03</span>Create a Project File</a><a class="lab-link " href="lab-04.html"><span>04</span>Stage Your First File</a><a class="lab-link " href="lab-05.html"><span>05</span>Make Your First Commit</a><a class="lab-link " href="lab-06.html"><span>06</span>Make and Inspect a Change</a><a class="lab-link " href="lab-07.html"><span>07</span>Stage and Commit the Change</a><a class="lab-link " href="lab-08.html"><span>08</span>Staged vs. Unstaged Changes</a><a class="lab-link " href="lab-09.html"><span>09</span>Add a README</a><a class="lab-link " href="lab-10.html"><span>10</span>Inspect Repository History</a><a class="part-link" href="../index.html#part-2">Part 2 · Branching &amp; merging</a><a class="lab-link " href="lab-11.html"><span>11</span>Understanding Branches</a><a class="lab-link " href="lab-12.html"><span>12</span>Create a Branch</a><a class="lab-link " href="lab-13.html"><span>13</span>Work on a Branch</a><a class="lab-link " href="lab-14.html"><span>14</span>Switch Between Branches</a><a class="lab-link active" href="lab-15.html"><span>15</span>Create Diverging Work</a><a class="lab-link " href="lab-16.html"><span>16</span>View Branch History</a><a class="lab-link " href="lab-17.html"><span>17</span>Merge Branches</a><a class="lab-link " href="lab-18.html"><span>18</span>Create a Merge Conflict</a><a class="lab-link " href="lab-19.html"><span>19</span>Resolve a Merge Conflict</a><a class="lab-link " href="lab-20.html"><span>20</span>M3 Checkpoint</a></aside>
 <main id="main" class="lesson"><div class="crumb"><a href="../index.html">CIS-1160 Git Practice</a><span>/</span><span>Lab 15</span></div><div class="lesson-kicker">Part 2 · Branching and merging</div><h1>Lab 15: Create Diverging Work</h1><div class="lesson-progress"><span>Lab 15 of 20</span><div class="progress-track"><span style="width:75%"></span></div></div>
-<section class="lesson-section goal-section"><h2>Goal</h2><p>Create different commits on two branches.</p>
-<p>You should currently be on <code>main</code>.</p>
-<p>Open <code>README.md</code>.</p>
-<p>Add:</p>
-<pre><code></code></pre></section>
-<section class="lesson-section "><h2>Instructions</h2><h3>Purpose</h3><p>These files support a repeatable network troubleshooting process.</p>
-<pre><code>
-Save and commit:
-</code></pre>
-<p>git add README.md git commit -m "Document repository purpose"</p>
-<pre><code>
-Now the branches contain different work:
+<section class="lesson-section goal-section"><h2>Goal</h2><p>Create a different change on <code>main</code> so that <code>main</code> and <code>troubleshooting</code> contain independent work.</p></section>
+<section class="lesson-section "><h2>Instructions</h2><h3>Instructions</h3><p>You should currently be on <code>main</code>. Verify the current branch:</p>
+<pre><code>git branch</code></pre>
+<p>The <code>*</code> should be beside <code>main</code>.</p>
+<p>Open <code>README.md</code> and add:</p>
+<pre><code>## Purpose
 
-- `main` contains the README change
-- `troubleshooting` contains additional checklist changes
-
----</code></pre></section>
-<section class="lesson-section "><h2>Commands</h2><p class="section-intro">Use these commands as you work through the instructions. Run them in Git Bash.</p><p>Use the commands shown in the instructions in the order presented.</p></section>
-<section class="lesson-section notice-section"><h2>What to Notice</h2><p>The README commit is on main, while the checklist commits remain on troubleshooting.</p></section>
-<section class="lesson-section check-section"><h2>Check Your Work</h2><p>Run git branch and git log --oneline. Confirm each branch contains its own recent work.</p></section>
+These files support a repeatable network troubleshooting process.</code></pre>
+<p>Save the file. Check that Git sees the change:</p>
+<pre><code>git status</code></pre>
+<p>Stage and commit the README change:</p>
+<pre><code>git add README.md
+git commit -m &quot;Document repository purpose&quot;</code></pre></section>
+<section class="lesson-section "><h2>Commands</h2><p class="section-intro">Use these commands as you work through the instructions. Run them in Git Bash.</p><div class="command-item"><pre><code>git branch</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git status</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git add README.md
+git commit -m &quot;Document repository purpose&quot;</code></pre><button class="copy-button" type="button">Copy</button></div><div class="command-item"><pre><code>git branch
+git status</code></pre><button class="copy-button" type="button">Copy</button></div></section>
+<section class="lesson-section notice-section"><h2>What to Notice</h2><p>The branches now contain different commits:</p>
+<ul>
+<li><code>main</code> contains the README change.</li>
+<li><code>troubleshooting</code> contains the additional network-checklist changes.</li>
+</ul>
+<p>Do not merge them yet. Lab 16 will visualize the divergence first.</p></section>
+<section class="lesson-section check-section"><h2>Check Your Work</h2><p>Run:</p>
+<pre><code>git branch
+git status</code></pre>
+<p>Confirm that <code>main</code> is current, <code>troubleshooting</code> still exists, and the working tree is clean.</p></section>
 <section class="recovery"><div class="recovery-icon" aria-hidden="true">↻</div><div><h2>Repository broken?</h2><p>If your repository is no longer in the expected state, download this checkpoint and continue from the files and history it contains. Extract the ZIP, then use Git Bash in the extracted support-tools folder.</p></div><a class="button secondary" href="../checkpoints/lab-15-start.zip" download>Download Lab 15 checkpoint</a></section>
 <nav class="lesson-nav" aria-label="Previous and next lessons"><a href="lab-14.html" class="nav-card"><span>← Previous</span><strong>Lab 14: Switch Between Branches</strong></a><a href="lab-16.html" class="nav-card next"><span>Next →</span><strong>Lab 16: View Branch History</strong></a></nav><footer class="site-footer">CIS-1160 Introduction to Information Systems · Git fundamentals and branching</footer></main></div><script src="../assets/site.js"></script></body></html>
